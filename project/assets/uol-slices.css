@@ -94,32 +94,32 @@
     linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,.30) 100%);
   pointer-events: none;
 }
-/* Hero play affordance — circular disc + caption underneath
-   Deliberately not a square+label "button": that visual fights the
-   primary CTA in the title band above. Universal video-play shape. */
+/* Hero play affordance — unified pill: white play arrow + italic
+   label inside a single red button, centred on the photo. */
 .hero__media-play {
   position: absolute; left: 50%; top: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  display: inline-flex; flex-direction: column; align-items: center;
+  display: inline-flex; align-items: center;
   gap: 14px;
-  background: transparent;
+  padding: 14px 28px 14px 18px;
   border: 0;
-  padding: 0;
-  cursor: pointer;
-  color: #fff;
-}
-.hero__media-play-disc {
-  position: relative;
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 96px; height: 96px;
-  border-radius: 50%;
+  border-radius: 9999px;
   background: var(--theme-primary);
   color: #fff;
+  cursor: pointer;
   box-shadow: 0 18px 44px rgba(0,0,0,.45);
   transition: background-color .2s ease, transform .2s ease;
 }
-.hero__media-play-disc svg { width: 34px; height: 34px; margin-left: 4px; }
+.hero__media-play-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  color: #fff;
+  flex-shrink: 0;
+}
+.hero__media-play-icon svg { width: 20px; height: 20px; margin-left: 3px; }
 .hero__media-play-label {
   font-family: var(--f-freight);
   font-style: italic;
@@ -127,12 +127,11 @@
   font-size: 22px;
   letter-spacing: .005em;
   color: #fff;
-  text-shadow: 0 2px 12px rgba(0,0,0,.55);
   white-space: nowrap;
 }
-.hero__media-play:hover .hero__media-play-disc {
+.hero__media-play:hover {
   background: var(--color-blue-800);
-  transform: scale(1.05);
+  transform: translate(-50%, -50%) scale(1.04);
 }
 
 /* Breadcrumb strip between bands (matches LLB pattern) */
@@ -194,9 +193,9 @@
 @media (max-width: 720px){
   .hero__title-band { padding: 48px 0 40px; }
   .hero__modes { gap: 18px; }
-  .hero__media-play { gap: 10px; }
-  .hero__media-play-disc { width: 76px; height: 76px; }
-  .hero__media-play-disc svg { width: 28px; height: 28px; }
+  .hero__media-play { gap: 10px; padding: 10px 22px 10px 14px; }
+  .hero__media-play-icon { width: 36px; height: 36px; }
+  .hero__media-play-icon svg { width: 16px; height: 16px; }
   .hero__media-play-label { font-size: 17px; }
 }
 
