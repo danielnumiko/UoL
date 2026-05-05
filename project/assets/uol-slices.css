@@ -90,7 +90,9 @@
 }
 .hero__media-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,.28) 100%);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,0,0,.18) 0%, rgba(0,0,0,.55) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,.30) 100%);
   pointer-events: none;
 }
 /* Inline play affordance — red square + italic caption (UoL programme hero pattern) */
@@ -100,32 +102,51 @@
   z-index: 2;
   display: inline-flex; align-items: stretch;
   background: var(--theme-primary);
-  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+  box-shadow: 0 16px 40px rgba(0,0,0,.45);
   cursor: pointer;
   border: 0;
   padding: 0;
-  transition: background-color .2s ease;
+  transition: background-color .2s ease, transform .2s ease;
   color: #fff;
 }
+/* Idle pulse ring — motion-safe */
+.hero__media-play::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--theme-primary);
+  z-index: -1;
+  opacity: .55;
+  animation: heroPlayPulse 2.2s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes heroPlayPulse {
+  0%   { transform: scale(1);    opacity: .55; }
+  70%  { transform: scale(1.45); opacity: 0;   }
+  100% { transform: scale(1.45); opacity: 0;   }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__media-play::before { animation: none; opacity: 0; }
+}
 .hero__media-play .btn-play {
-  width: 56px; height: 56px;
+  width: 84px; height: 84px;
   background: transparent;
   box-shadow: none;
   flex-shrink: 0;
 }
-.hero__media-play .btn-play svg { width: 20px; height: 20px; margin-left: 3px; }
+.hero__media-play .btn-play svg { width: 30px; height: 30px; margin-left: 4px; }
 .hero__media-play-label {
   display: inline-flex; align-items: center;
-  padding: 0 28px 0 8px;
+  padding: 0 32px 0 10px;
   font-family: var(--f-freight);
   font-style: italic;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 22px;
   letter-spacing: .005em;
   white-space: nowrap;
 }
 .hero__media:hover .hero__media-play,
 .hero__media-play:hover { background: var(--color-blue-800); }
+.hero__media:hover .hero__media-play { transform: translate(-50%, -50%) scale(1.04); }
 
 /* Breadcrumb strip between bands (matches LLB pattern) */
 .hero__breadcrumb {
@@ -186,8 +207,9 @@
 @media (max-width: 720px){
   .hero__title-band { padding: 48px 0 40px; }
   .hero__modes { gap: 18px; }
-  .hero__media-play .btn-play { width: 48px; height: 48px; }
-  .hero__media-play-label { font-size: 15px; padding-right: 20px; }
+  .hero__media-play .btn-play { width: 64px; height: 64px; }
+  .hero__media-play .btn-play svg { width: 24px; height: 24px; }
+  .hero__media-play-label { font-size: 17px; padding: 0 22px 0 8px; }
 }
 
 /* Variant B · overlay hero (one-band) */
