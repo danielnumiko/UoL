@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UOL — Video components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400;1,9..40,500&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  /* Tokens lifted from the live UOL stylesheet (numiko theme) */
+  :root {
+    /* Brand */
+    --theme-light:    #FC3528;
+    --theme-dark:     #DE2121;
+    --theme-primary:  var(--theme-dark);
+    --theme-keyline:  #D9D9D9;
+
+    /* Palette */
+    --color-blue-700: rgb(32 25 74);    /* dark section bg */
+    --color-blue-800: rgb(27 21 62);    /* primary ink */
+    --color-grey-100: rgb(245 247 249);
+    --color-grey-300: rgb(217 217 217);
+    --color-grey-350: rgb(185 186 195);
+    --color-body:     rgb(95 91 119);   /* muted body */
+    --color-page-bg:  rgb(236 236 236); /* page bg */
+    --color-white:    #fff;
+
+    /* Type — DM Sans for body/UI, freight-display-pro for display */
+    --f-sans: "DM Sans", Arial, sans-serif;
+    --f-freight: "Fraunces", "freight-display-pro", "Times New Roman", Georgia, serif;
+
+    /* Layout */
+    --gutter: 24px;
+    --container: 1440px;
+    --header-h: 5.5rem;
+  }
+  @media (min-width: 768px){ :root { --gutter: 32px; } }
+  @media (min-width: 1024px){ :root { --gutter: 40px; --header-h: 6.25rem; } }
+  @media (min-width: 1600px){ :root { --gutter: 64px; } }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background-color: var(--color-page-bg);
+    color: var(--color-body);
+    font-family: var(--f-sans);
+    font-size: 16px;
+    line-height: 1.625;
+    letter-spacing: -0.3px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  img { display: block; max-width: 100%; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+  a { color: inherit; }
+  h1,h2,h3,h4,h5,h6 { color: var(--color-blue-800); margin: 0; }
+
+  .container { max-width: var(--container); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+  /* ---------- Site header (mimics UOL chrome) ---------- */
+  .site-header {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--theme-keyline);
+    position: relative;
+    z-index: 5;
+  }
+  .site-header__row {
+    display: flex; align-items: center; justify-content: space-between;
+    height: var(--header-h);
+    gap: 24px;
+  }
+  .site-header__brand img { height: 56px; width: auto; }
+  @media (min-width: 1024px){ .site-header__brand img { height: 64px; } }
+  .site-header__nav { display: none; gap: 28px; align-items: center; }
+  @media (min-width: 1024px){ .site-header__nav { display: flex; } }
+  .site-header__nav a {
+    text-decoration: none;
+    color: var(--color-blue-800);
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    padding: 4px 0;
+  }
+  .site-header__nav a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+    height: 2px; background: var(--theme-primary);
+    transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+  }
+  .site-header__nav a:hover::after { transform: scaleX(1); }
+  .site-header__cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--theme-primary);
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background .2s ease;
+  }
+  .site-header__cta:hover { background: var(--theme-light); }
+
+  .breadcrumb {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--theme-keyline);
+    font-size: 13px;
+    color: var(--color-body);
+    padding: 14px 0;
+  }
+  .breadcrumb a { color: var(--color-blue-800); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--theme-primary); }
+  .breadcrumb__sep { margin: 0 10px; color: var(--color-grey-350); }
+  /* Breadcrumb sitting on the navy course intro background (as on live UOL hero) */
+  .breadcrumb--on-dark { background: var(--color-blue-800); border-bottom: 0; color: rgba(255,255,255,.85); padding: 18px 0; }
+  .breadcrumb--on-dark a { color: rgba(255,255,255,.92); }
+  .breadcrumb--on-dark a:hover { color: var(--theme-primary); }
+  .breadcrumb--on-dark .breadcrumb__sep { color: var(--theme-primary); }
+  .breadcrumb--on-dark .breadcrumb__current { font-style: italic; font-family: var(--f-freight); font-size: 14px; color: rgba(255,255,255,.85); }
+
+  /* ---------- Section scaffolding ---------- */
+  .section {
+    background: var(--color-white);
+    padding-top: 56px; padding-bottom: 56px;
+    border-bottom: 1px solid var(--theme-keyline);
+  }
+  .section--flush { padding-top: 0; padding-bottom: 0; border-bottom: 0; background: var(--color-page-bg); }
+  .section--flush > * + * { margin-top: 0; }
+  @media (min-width: 768px){ .section { padding-top: 80px; padding-bottom: 80px; } }
+  @media (min-width: 1600px){ .section { padding-top: 112px; padding-bottom: 112px; } }
+  .section--dark {
+    background: var(--color-blue-700);
+    color: var(--color-white);
+    border-bottom-color: rgba(255,255,255,.12);
+  }
+  .section--dark h2, .section--dark h3 { color: #fff; }
+
+  .section__head {
+    display: flex; flex-direction: column; gap: 16px;
+    margin-bottom: 40px;
+  }
+  @media (min-width: 1024px){
+    .section__head { flex-direction: row; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 56px; }
+  }
+  .section__title {
+    font-family: var(--f-freight);
+    font-weight: 500;
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--color-blue-800);
+    text-wrap: balance;
+  }
+  .section--dark .section__title { color: #fff; }
+  .section__sub {
+    font-family: var(--f-freight);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-blue-800);
+    font-size: 20px;
+    line-height: 1.4;
+    max-width: 56ch;
+    margin-top: 14px;
+    text-wrap: pretty;
+  }
+  .section--dark .section__sub { color: rgba(255,255,255,.78); }
+
+  .source-tag {
+    align-self: start;
+    font-family: var(--f-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--color-body);
+    border: 1px solid var(--theme-keyline);
+    padding: 8px 14px;
+    border-radius: 0;
+    white-space: nowrap;
+  }
+  .section--dark .source-tag { color: rgba(255,255,255,.78); border-color: rgba(255,255,255,.18); }
+
+  /* ---------- Course intro block (the navy header above the video) ---------- */
+  .course-intro {
+    position: relative;
+    background: var(--color-blue-800);
+    color: #fff;
+    overflow: hidden;
+    padding: 64px var(--gutter) 80px;
+    text-align: center;
+  }
+  @media (min-width: 1024px){ .course-intro { padding: 96px var(--gutter) 112px; } }
+  /* the swooping red line graphic. One continuous stroke that enters from the top, passes behind the heading, loops, and exits bottom-right. */
+  .course-intro__swoop {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 1;
+  }
+  .course-intro__swoop path { fill: none; stroke: var(--theme-primary); stroke-width: 2.5; stroke-linecap: round; }
+  .course-intro__inner { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; }
+  .course-intro__tags {
+    display: inline-flex; gap: 8px; flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+  .course-intro__tag {
+    background: #fff;
+    color: var(--color-blue-800);
+    font-family: var(--f-freight);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1;
+    padding: 8px 14px 10px;
+    letter-spacing: -0.01em;
+  }
+  .course-intro__title {
+    font-family: var(--f-freight);
+    font-style: normal;
+    font-weight: 500;
+    color: #fff;
+    font-size: clamp(40px, 5.6vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin: 0 0 24px;
+    text-wrap: balance;
+  }
+  .course-intro__modes {
+    display: inline-flex; flex-wrap: wrap; justify-content: center;
+    gap: 28px;
+    margin-bottom: 18px;
+    color: rgba(255,255,255,.95);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .course-intro__mode { display: inline-flex; align-items: center; gap: 8px; }
+  .course-intro__mode svg { width: 22px; height: 22px; opacity: .85; }
+  .course-intro__lede {
+    font-family: var(--f-sans);
+    color: rgba(255,255,255,.92);
+    font-size: 17px;
+    line-height: 1.55;
+    max-width: 640px;
+    margin: 0 auto 32px;
+    text-wrap: pretty;
+  }
+  .course-intro__ctas { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .btn--solid, .btn--outline {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 13px 24px;
+    font-family: var(--f-sans); font-weight: 500; font-size: 15px;
+    text-decoration: none;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .btn--solid { background: var(--theme-primary); color: #fff; border-color: var(--theme-primary); }
+  .btn--solid:hover { background: var(--theme-light); border-color: var(--theme-light); }
+  .btn--outline { background: transparent; color: #fff; border-color: #fff; }
+  .btn--outline:hover { background: #fff; color: var(--color-blue-800); }
+
+  /* ---------- Hero video (full-width image with red play+label tag at bottom) ---------- */
+  .hero-video {
+    position: relative;
+    background: var(--color-blue-800);
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 720px;
+  }
+  .hero-video__img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  /* the red "play + Learn about this course" tag, sitting centered in the hero video */
+  .hero-video__tag {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex; align-items: stretch;
+    background: var(--theme-primary);
+    color: #fff;
+    transition: background .2s ease;
+    z-index: 2;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(0,0,0,.18);
+  }
+  .hero-video__tag:hover { background: var(--theme-light); }
+  .hero-video__tag-icon {
+    width: 56px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-right: 1px solid rgba(255,255,255,.25);
+  }
+  .hero-video__tag-icon svg { width: 18px; height: 18px; }
+  .hero-video__tag-text {
+    display: inline-flex; align-items: center;
+    font-family: var(--f-freight);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1;
+    padding: 16px 28px 16px 22px;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+  }
+
+  /* Square red play button (used on testimonial cards) — matches live UOL pattern */
+  .btn-play {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px;
+    min-width: 44px; min-height: 44px;
+    background: var(--theme-primary);
+    color: #fff;
+    transition: background-color .2s ease;
+  }
+  .btn-play:hover { background: var(--theme-light); }
+  .btn-play svg { width: 14px; height: 14px; margin-left: 2px; }
+
+  .btn-play--md { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+  .btn-play--md svg { width: 14px; height: 14px; margin-left: 2px; }
+
+  /* container that holds the navy intro + the video */
+  .hero-pair {
+    display: block;
+    background: var(--color-blue-800);
+    max-width: 1440px;
+    margin: 48px auto;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,.08);
+  }
+  @media (min-width: 768px){ .hero-pair { margin: 64px auto; } }
+  .hero-pair + .hero-pair { margin-top: 0; }
+
+  /* ---------- Testimonial cards (matches UOL "What our students say" pattern) ---------- */
+  .grid-testimonials {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 768px){ .grid-testimonials { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
+  @media (min-width: 1100px){ .grid-testimonials { grid-template-columns: repeat(3, 1fr); gap: 40px 32px; } }
+
+  .t-card { display: flex; flex-direction: column; }
+  .t-card__media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--color-blue-800);
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .t-card__media img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+  }
+  .t-card:hover .t-card__media img { transform: scale(1.04); }
+  .t-card__play {
+    position: absolute;
+    right: 12px; bottom: 12px;
+    z-index: 2;
+  }
+
+  /* Quote uses freight-display-pro semibold, blue-800 — matches .h5.font-freight */
+  .t-card__quote {
+    font-family: var(--f-freight);
+    font-weight: 600;
+    color: var(--color-blue-800);
+    font-size: clamp(20px, 1.6vw, 24px);
+    line-height: 1.25;
+    margin: 0 0 20px;
+    letter-spacing: -0.005em;
+    text-wrap: pretty;
+  }
+  .t-card__quote::before, .t-card__quote::after { content: ""; }
+  /* Attribution: italic freight, with red left bar */
+  .t-card__attr {
+    font-family: var(--f-freight);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-blue-800);
+    font-size: 18px;
+    line-height: 1.3;
+    border-left: 4px solid var(--theme-primary);
+    padding-left: 12px;
+    margin: 0;
+  }
+  .t-card__attr + .t-card__attr { margin-top: 6px; }
+  .t-card__intro {
+    font-family: var(--f-freight);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-blue-800);
+    font-size: 18px;
+    line-height: 1.3;
+    border-left: 4px solid var(--theme-primary);
+    padding-left: 12px;
+    margin: 0;
+  }
+
+  /* Carousel arrows row (style only — visual mock) */
+  .carousel-foot {
+    display: flex; justify-content: flex-end;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--theme-keyline);
+  }
+  .carousel-foot__arrows { display: flex; gap: 8px; }
+  .ico-btn {
+    width: 44px; height: 44px;
+    border: 1px solid var(--color-blue-800);
+    color: var(--color-blue-800);
+    background: transparent;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background .2s ease, color .2s ease;
+    border-radius: 50%;
+  }
+  .ico-btn:hover { background: var(--color-blue-800); color: #fff; }
+  .ico-btn[disabled] { opacity: .4; cursor: not-allowed; }
+  .ico-btn svg { width: 16px; height: 16px; }
+
+  /* ---------- Index list (dark section) ---------- */
+  .source-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+  @media (min-width: 768px){ .source-list { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1100px){ .source-list { grid-template-columns: repeat(3, 1fr); } }
+  .source-list__item {
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    padding: 24px 28px 28px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  @media (min-width: 768px){ .source-list__item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.12); } }
+  @media (min-width: 1100px){
+    .source-list__item:nth-child(odd) { border-right: none; }
+    .source-list__item:not(:nth-child(3n)) { border-right: 1px solid rgba(255,255,255,.12); }
+  }
+  .source-list__label {
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: rgba(255,255,255,.6); font-weight: 500;
+  }
+  .source-list__title {
+    font-family: var(--f-freight);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .source-list__count {
+    color: rgba(255,255,255,.6);
+    font-size: 13px;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    letter-spacing: 0;
+  }
+
+  /* ---------- Modal ---------- */
+  .modal { position: fixed; inset: 0; z-index: 100; display: none; }
+  .modal.is-open { display: block; }
+  .modal__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.92); }
+  .modal__shell {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .modal__panel {
+    position: relative;
+    width: min(1200px, 100%);
+  }
+  .modal__close {
+    position: absolute; top: -56px; right: 0;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--theme-primary);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s ease;
+  }
+  .modal__close:hover { background: var(--theme-light); }
+  .modal__title {
+    color: rgba(255,255,255,.85);
+    font-family: var(--f-freight);
+    font-style: italic;
+    font-size: 16px;
+    position: absolute; top: -48px; left: 0;
+    margin: 0;
+    max-width: calc(100% - 70px);
+  }
+  .modal__frame {
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+  }
+  .modal__frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  :focus-visible { outline: 2px solid var(--theme-primary); outline-offset: 3px; }
+
+  /* footer */
+  .site-footer {
+    background: var(--color-blue-800);
+    color: rgba(255,255,255,.75);
+    padding: 48px 0;
+    text-align: center;
+    font-size: 13px;
+  }
+  .site-footer code {
+    background: rgba(255,255,255,.06);
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body class="theme-uol">
+
+  <!-- Site header (UOL-style chrome so the prototype reads like a real page on the site) -->
+  <header class="site-header">
+    <div class="container site-header__row">
+      <a class="site-header__brand" href="#" aria-label="University of London">
+        <img src="assets/uol-logo.png" alt="University of London">
+      </a>
+      <nav class="site-header__nav" aria-label="Primary">
+        <a href="#">Study</a>
+        <a href="#">Student experience</a>
+        <a href="#">About us</a>
+        <a href="#">News &amp; events</a>
+      </nav>
+      <a class="site-header__cta" href="#">
+        Apply now
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb" style="display:none">
+    <div class="container">
+      <a href="#">Home</a>
+      <span class="breadcrumb__sep">/</span>
+      <a href="#">Study</a>
+      <span class="breadcrumb__sep">/</span>
+      <a href="#">Courses</a>
+      <span class="breadcrumb__sep">/</span>
+      <span>Video components</span>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       1. HERO VIDEOS — navy course intro + full-width video below
+       ============================================================ -->
+  <section class="section section--flush" data-screen-label="01 LLB hero">
+
+    <!-- LLB: course intro + video pair -->
+    <div class="hero-pair" data-screen-label="01a LLB intro + video">
+
+      <!-- Course intro: navy block with tags, title, modes, lede, CTAs, swooping red lines -->
+      <div class="course-intro">
+        <svg class="course-intro__swoop" viewBox="0 0 1440 540" preserveAspectRatio="none" aria-hidden="true">
+          <!-- One continuous arc; the middle is occluded by the centered text. 
+               Entry: top-center, sweeps down to behind the title.
+               After title: emerges below-left of center, forms a small loop, then exits long arc to bottom-right. -->
+          <path d="M 580 -20
+                   C 600 60, 640 110, 720 150
+                   L 720 150
+                   M 560 410
+                   C 530 380, 530 358, 560 350
+                   C 590 344, 605 374, 580 386
+                   C 560 394, 548 380, 560 368
+                   C 600 332, 760 408, 940 460
+                   C 1140 510, 1300 540, 1460 560" />
+        </svg>
+        <div class="course-intro__inner">
+          <div class="course-intro__tags">
+            <span class="course-intro__tag">LLB</span>
+          </div>
+          <h1 class="course-intro__title">LLB Bachelor of Laws</h1>
+          <div class="course-intro__modes">
+            <span class="course-intro__mode">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="14" rx="1.5"/><path d="M2 20h20"/></svg>
+              Study online
+            </span>
+            <span class="course-intro__mode">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 20v-6h6v6"/></svg>
+              In person at a teaching centre
+            </span>
+          </div>
+          <p class="course-intro__lede">Set out on the path to becoming a lawyer with a flexible LLB programme that fits around you. Unlock a fast-track route to graduate sooner if you already have a degree.</p>
+          <div class="course-intro__ctas">
+            <a class="btn--outline" href="#">Register your interest</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero video block, sits flush under the intro -->
+      <nav class="breadcrumb breadcrumb--on-dark" aria-label="Breadcrumb">
+        <div class="container">
+          <a href="#">Home</a>
+          <span class="breadcrumb__sep">▸</span>
+          <a href="#">Study</a>
+          <span class="breadcrumb__sep">▸</span>
+          <a href="#">Find a course</a>
+          <span class="breadcrumb__sep">▸</span>
+          <a href="#">Undergraduate study</a>
+          <span class="breadcrumb__sep">▸</span>
+          <span class="breadcrumb__current">LLB Bachelor of Laws</span>
+        </div>
+      </nav>
+      <div class="hero-video">
+        <img class="hero-video__img" src="assets/hero-llb.jpg" alt="">
+        <button type="button" class="hero-video__tag"
+                data-video-id="mu9v7vAXzes"
+                data-video-title="Study for an LLB with the University of London"
+                aria-label="Play video: Study for an LLB with the University of London">
+          <span class="hero-video__tag-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span class="hero-video__tag-text">Learn about this course</span>
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="section section--flush" data-screen-label="01b LLM hero">
+
+    <!-- LLM: course intro + video pair -->
+    <div class="hero-pair">
+
+      <div class="course-intro">
+        <svg class="course-intro__swoop" viewBox="0 0 1440 540" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M 580 -20
+                   C 600 60, 640 110, 720 150
+                   L 720 150
+                   M 560 410
+                   C 530 380, 530 358, 560 350
+                   C 590 344, 605 374, 580 386
+                   C 560 394, 548 380, 560 368
+                   C 600 332, 760 408, 940 460
+                   C 1140 510, 1300 540, 1460 560" />
+        </svg>
+        <div class="course-intro__inner">
+          <div class="course-intro__tags">
+            <span class="course-intro__tag">LLM</span>
+            <span class="course-intro__tag">PGCert</span>
+            <span class="course-intro__tag">PGDip</span>
+          </div>
+          <h1 class="course-intro__title">LLM Postgraduate Laws</h1>
+          <div class="course-intro__modes">
+            <span class="course-intro__mode">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="14" rx="1.5"/><path d="M2 20h20"/></svg>
+              Study online
+            </span>
+            <span class="course-intro__mode">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 20v-6h6v6"/></svg>
+              In person at a teaching centre
+            </span>
+          </div>
+          <p class="course-intro__lede">With this globally respected, flexible law degree, you could achieve your LLM without a prior degree and choose to specialise in one of 33 areas or select from 68 courses for a general award.</p>
+          <div class="course-intro__ctas">
+            <a class="btn--solid" href="#">Apply now</a>
+            <a class="btn--outline" href="#">Register your interest</a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="breadcrumb breadcrumb--on-dark" aria-label="Breadcrumb">
+        <div class="container">
+          <a href="#">Home</a>
+          <span class="breadcrumb__sep">▸</span>
+          <a href="#">Study</a>
+          <span class="breadcrumb__sep">▸</span>
+          <a href="#">Find a course</a>
+          <span class="breadcrumb__sep">▸</span>
+          <a href="#">Postgraduate study</a>
+          <span class="breadcrumb__sep">▸</span>
+          <span class="breadcrumb__current">LLM Postgraduate Laws</span>
+        </div>
+      </nav>
+      <div class="hero-video">
+        <img class="hero-video__img" src="assets/hero-llm.jpg" alt="">
+        <button type="button" class="hero-video__tag"
+                data-video-id="1-bWU7gFMkg"
+                data-video-title="Time for a Master of Laws (LLM)"
+                aria-label="Play video: Time for a Master of Laws (LLM)">
+          <span class="hero-video__tag-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span class="hero-video__tag-text">Learn about this course</span>
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================================
+       2. TESTIMONIAL CAROUSEL — LLB
+       ============================================================ -->
+  <section class="section" data-screen-label="02 LLB testimonials">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h2 class="section__title">What our students say</h2>
+          <p class="section__sub">A carousel of student and alumni stories. Each card pairs a 16:9 thumbnail with a pull quote and attribution; the play button opens the video in the same gallery modal.</p>
+        </div>
+        <span class="source-tag">From: LLB page · 6 stories</span>
+      </div>
+
+      <div class="grid-testimonials">
+
+        <!-- Khadija -->
+        <article class="t-card">
+          <div class="t-card__media">
+            <img src="assets/thumb-khadija.jpg" alt="Portrait of Khadija Joher">
+            <button type="button" class="btn-play btn-play--md t-card__play"
+                    data-video-id="DY1WifZRloQ"
+                    data-video-title="Student stories: Khadija, LLB Law, Pakistan"
+                    aria-label="Play video: Student stories — Khadija, LLB Law, Pakistan">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <blockquote class="t-card__quote">&ldquo;My favourite thing about the study experience so far has been meeting a diverse group of people from all backgrounds in Pakistan.&rdquo;</blockquote>
+          <p class="t-card__attr">Khadija Joher</p>
+          <p class="t-card__attr">Pakistan</p>
+        </article>
+
+        <!-- Nilmini -->
+        <article class="t-card">
+          <div class="t-card__media">
+            <img src="assets/thumb-nilmini.jpg" alt="Portrait of Nilmini Kumari Fernando">
+            <button type="button" class="btn-play btn-play--md t-card__play"
+                    data-video-id="W6_uQe8kHXQ"
+                    data-video-title="Alumni Inspiration: Nilmini, Bachelor of Laws (LLB), Sri Lanka"
+                    aria-label="Play video: Alumni Inspiration — Nilmini, LLB, Sri Lanka">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <blockquote class="t-card__quote">&ldquo;My favourite thing was how the LLB made us think outside the box. It made you grow as an individual.&rdquo;</blockquote>
+          <p class="t-card__attr">Nilmini Kumari Fernando</p>
+          <p class="t-card__attr">Sri Lanka</p>
+        </article>
+
+        <!-- Ahmed -->
+        <article class="t-card">
+          <div class="t-card__media">
+            <img src="assets/thumb-ahmed.jpg" alt="Portrait of Ahmed Imran Dewan">
+            <button type="button" class="btn-play btn-play--md t-card__play"
+                    data-video-id="BC9gzNKchD4"
+                    data-video-title="Alumni stories: Ahmed, LLB Law, Pakistan"
+                    aria-label="Play video: Alumni stories — Ahmed, LLB Law, Pakistan">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <blockquote class="t-card__quote">&ldquo;My degree laid the perfect foundation I needed for my chosen career. It taught me how to excel under pressure.&rdquo;</blockquote>
+          <p class="t-card__attr">Ahmed Imran Dewan</p>
+          <p class="t-card__attr">Pakistan</p>
+        </article>
+
+        <!-- Maarij -->
+        <article class="t-card">
+          <div class="t-card__media">
+            <img src="assets/thumb-maarij.jpg" alt="Portrait of Maarij Shabbir">
+            <button type="button" class="btn-play btn-play--md t-card__play"
+                    data-video-id="B99JNC4zXg0"
+                    data-video-title="Alumni Inspiration: Maarij, Bachelor of Laws (LLB), Pakistan"
+                    aria-label="Play video: Alumni Inspiration — Maarij, LLB, Pakistan">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <blockquote class="t-card__quote">&ldquo;I&rsquo;d heard a lot about the University of London LLB. You can get a world-class education in your home country.&rdquo;</blockquote>
+          <p class="t-card__attr">Maarij Shabbir</p>
+          <p class="t-card__attr">Pakistan</p>
+        </article>
+
+        <!-- Farzad -->
+        <article class="t-card">
+          <div class="t-card__media">
+            <img src="https://img.youtube.com/vi/oQ9uZhAe928/maxresdefault.jpg" alt="Portrait of Ahmed Farzad Bin Raunak"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/oQ9uZhAe928/hqdefault.jpg'">
+            <button type="button" class="btn-play btn-play--md t-card__play"
+                    data-video-id="oQ9uZhAe928"
+                    data-video-title="Alumni stories: Farzad, LLB Law, Bangladesh"
+                    aria-label="Play video: Alumni stories — Farzad, LLB Law, Bangladesh">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <blockquote class="t-card__quote">&ldquo;Starting from registration into the programme, to registration for the exams and exam preparation tuition support, everything was fantastic.&rdquo;</blockquote>
+          <p class="t-card__attr">Ahmed Farzad Bin Raunak</p>
+          <p class="t-card__attr">Bangladesh</p>
+        </article>
+
+        <!-- Naomi -->
+        <article class="t-card">
+          <div class="t-card__media">
+            <img src="https://img.youtube.com/vi/NsEODCQspR8/maxresdefault.jpg" alt="Portrait of Naomi Sharif"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/NsEODCQspR8/hqdefault.jpg'">
+            <button type="button" class="btn-play btn-play--md t-card__play"
+                    data-video-id="NsEODCQspR8"
+                    data-video-title="Student stories: Naomi, LLB Law, Bangladesh"
+                    aria-label="Play video: Student stories — Naomi, LLB Law, Bangladesh">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <blockquote class="t-card__quote">&ldquo;This is an entire career shape that they&rsquo;re giving you. They&rsquo;re giving you opportunities. They&rsquo;re giving you plans and pathways.&rdquo;</blockquote>
+          <p class="t-card__attr">Naomi Sharif</p>
+          <p class="t-card__attr">Bangladesh</p>
+        </article>
+
+      </div>
+
+      <div class="carousel-foot">
+        <div class="carousel-foot__arrows" role="group" aria-label="Carousel controls">
+          <button type="button" class="ico-btn" aria-label="Previous slide" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button type="button" class="ico-btn" aria-label="Next slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       3. TESTIMONIAL CAROUSEL — LLM
+       ============================================================ -->
+  <section class="section" data-screen-label="03 LLM testimonials">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h2 class="section__title">What our students say</h2>
+          <p class="section__sub">Same testimonial pattern; the LLM page ships a single, full-width card with an introductory caption rather than a quote.</p>
+        </div>
+        <span class="source-tag">From: LLM page · 1 story</span>
+      </div>
+
+      <div class="grid-testimonials">
+
+        <article class="t-card" style="grid-column: 1 / -1; max-width: 720px;">
+          <div class="t-card__media">
+            <img src="assets/thumb-llm-graduates.jpg" alt="LLM graduates testimonial thumbnail">
+            <button type="button" class="btn-play btn-play--md t-card__play"
+                    data-video-id="xXvZPsP-1ag"
+                    data-video-title="Why I chose the University of London for my LLM"
+                    aria-label="Play video: Why I chose the University of London for my LLM">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <p class="t-card__intro">Hear from our graduates about why they chose the University of London&rsquo;s online LLM.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       4. INDEX — every video on this page
+       ============================================================ -->
+  <section class="section section--dark" data-screen-label="04 Index">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h2 class="section__title">Every video, in one place</h2>
+          <p class="section__sub">A flat index of every embed extracted from the LLB and LLM landing pages.</p>
+        </div>
+        <span class="source-tag">9 videos · YouTube</span>
+      </div>
+
+      <div class="source-list">
+        <div class="source-list__item">
+          <span class="source-list__label">Hero · LLB</span>
+          <span class="source-list__title">Study for an LLB with the University of London</span>
+          <span class="source-list__count">YouTube · mu9v7vAXzes</span>
+        </div>
+        <div class="source-list__item">
+          <span class="source-list__label">Hero · LLM</span>
+          <span class="source-list__title">Time for a Master of Laws (LLM)</span>
+          <span class="source-list__count">YouTube · 1-bWU7gFMkg</span>
+        </div>
+        <div class="source-list__item">
+          <span class="source-list__label">Testimonial · LLM</span>
+          <span class="source-list__title">Why I chose the University of London for my LLM</span>
+          <span class="source-list__count">YouTube · xXvZPsP-1ag</span>
+        </div>
+        <div class="source-list__item">
+          <span class="source-list__label">Testimonial · LLB</span>
+          <span class="source-list__title">Khadija Joher — Pakistan</span>
+          <span class="source-list__count">YouTube · DY1WifZRloQ</span>
+        </div>
+        <div class="source-list__item">
+          <span class="source-list__label">Testimonial · LLB</span>
+          <span class="source-list__title">Nilmini Kumari Fernando — Sri Lanka</span>
+          <span class="source-list__count">YouTube · W6_uQe8kHXQ</span>
+        </div>
+        <div class="source-list__item">
+          <span class="source-list__label">Testimonial · LLB</span>
+          <span class="source-list__title">Ahmed Imran Dewan — Pakistan</span>
+          <span class="source-list__count">YouTube · BC9gzNKchD4</span>
+        </div>
+        <div class="source-list__item">
+          <span class="source-list__label">Testimonial · LLB</span>
+          <span class="source-list__title">Maarij Shabbir — Pakistan</span>
+          <span class="source-list__count">YouTube · B99JNC4zXg0</span>
+        </div>
+        <div class="source-list__item">
+          <span class="source-list__label">Testimonial · LLB</span>
+          <span class="source-list__title">Ahmed Farzad Bin Raunak — Bangladesh</span>
+          <span class="source-list__count">YouTube · oQ9uZhAe928</span>
+        </div>
+        <div class="source-list__item">
+          <span class="source-list__label">Testimonial · LLB</span>
+          <span class="source-list__title">Naomi Sharif — Bangladesh</span>
+          <span class="source-list__count">YouTube · NsEODCQspR8</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      Components extracted from <code>LLB Bachelor of Laws _ University of London.html</code> and <code>LLM Postgraduate Laws _ University of London.html</code>.
+    </div>
+  </footer>
+
+
+  <!-- =============================== Modal =============================== -->
+  <div class="modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__shell">
+      <div class="modal__panel">
+        <p class="modal__title" id="video-modal-title"></p>
+        <button type="button" class="modal__close" data-close aria-label="Close video">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/>
+          </svg>
+        </button>
+        <div class="modal__frame" id="video-modal-frame"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var modal = document.getElementById('video-modal');
+  var frame = document.getElementById('video-modal-frame');
+  var titleEl = document.getElementById('video-modal-title');
+  var lastFocus = null;
+
+  function open(id, title){
+    if (!id) return;
+    lastFocus = document.activeElement;
+    titleEl.textContent = title || '';
+    frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0&modestbranding=1" title="' + (title || 'Video') + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+  }
+  function close(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    frame.innerHTML = '';
+    document.documentElement.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.addEventListener('click', function(e){
+    var trigger = e.target.closest('[data-video-id]');
+    if (trigger) {
+      e.preventDefault();
+      open(trigger.getAttribute('data-video-id'), trigger.getAttribute('data-video-title'));
+      return;
+    }
+    if (e.target.closest('[data-close]')) close();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+})();
+</script>
+
+</body>
+</html>

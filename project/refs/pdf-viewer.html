@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><title>PDF</title>
+<style>body{margin:0;background:#222} canvas{display:block;margin:8px auto;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.3)}</style>
+</head>
+<body>
+<div id="out"></div>
+<script type="module">
+import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.min.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.mjs';
+const url = new URLSearchParams(location.search).get('src') || '../uploads/UOL-Video content improvements brief - April 2026-010526-152354-29f95602.pdf';
+const pdf = await pdfjsLib.getDocument(url).promise;
+window.__total = pdf.numPages;
+window.__pdf = pdf;
+const out = document.getElementById('out');
+for (let i = 1; i <= pdf.numPages; i++) {
+  const page = await pdf.getPage(i);
+  const vp = page.getViewport({scale: 1.4});
+  const c = document.createElement('canvas');
+  c.id = 'page-'+i;
+  c.width = vp.width; c.height = vp.height;
+  out.appendChild(c);
+  await page.render({canvasContext: c.getContext('2d'), viewport: vp}).promise;
+}
+window.__rendered = true;
+document.title = 'PDF rendered: ' + pdf.numPages + ' pages';
+</script>
+</body></html>

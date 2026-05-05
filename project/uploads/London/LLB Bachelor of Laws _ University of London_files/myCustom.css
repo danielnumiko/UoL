@@ -1,0 +1,39 @@
+#myForm #YearofEntry, #courses, #levelOfStudy {
+  background: none !important;
+}
+
+#myForm .error-message {
+  display: none !important;
+}
+
+#myForm input[type="checkbox"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background: none !important;
+  border: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute !important;
+}
+
+#myForm .c-checkbox + label::before,
+#myForm input[type="checkbox"] + label::before {
+  content: none !important;
+  background-image: none !important;
+  border: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin-right: 0 !important;
+  display: none !important;
+}
+#twilio-webchat-widget-root .css-yiautb{
+	pointer-events:none;
+}
+#twilio-webchat-widget-root .css-yiautb>div{
+	pointer-events:auto;
+}
+#twilio-webchat-widget-root .css-yiautb>button{
+	pointer-events:auto;
+}

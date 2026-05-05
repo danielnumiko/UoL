@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UOL — Video slice components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="preconnect" href="https://p.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/wzk3ybw.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&display=swap" rel="stylesheet">
+<style>
+  /* Alias DM Sans (Google Fonts) → "DMSans" so our font stack matches the live site verbatim. */
+  @font-face {
+    font-family: "DMSans";
+    font-style: normal;
+    font-weight: 400 700;
+    src: local("DM Sans");
+  }
+  @font-face {
+    font-family: "DMSans";
+    font-style: italic;
+    font-weight: 400 700;
+    src: local("DM Sans");
+  }
+</style>
+<link rel="stylesheet" href="assets/uol-base.css">
+<link rel="stylesheet" href="assets/uol-slices.css">
+</head>
+<body>
+
+  <header class="doc-bar" role="banner">
+    <div class="container doc-bar__row">
+      <div class="doc-bar__brand">
+        <span class="doc-bar__dot" aria-hidden="true"></span>
+        <span class="doc-bar__label">UOL Component Documentation</span>
+      </div>
+      <div class="doc-bar__meta">
+        <span>Video slices · v1.0</span>
+        <span class="doc-bar__sep" aria-hidden="true">·</span>
+        <span>April 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="doc-intro">
+    <div class="container">
+      <p class="doc-intro__eyebrow">Documentation</p>
+      <h1 class="doc-intro__title">Improved video slices</h1>
+      <p class="doc-intro__lede">Drop-in replacements for the existing Drupal slices, plus new patterns for vertical content. Every play surface opens in the same gallery-aware modal that supports keyboard and swipe navigation between videos in a set.</p>
+    </div>
+  </section>
+
+  <nav class="tab-bar" id="component-tabs" aria-label="Component sections">
+    <div class="container tab-bar__row">
+      <a class="tab-bar__btn" href="#sec-hero"><span class="tab-bar__btn-num">00</span><span class="tab-bar__btn-label">Hero</span></a>
+      <a class="tab-bar__btn" href="#sec-media"><span class="tab-bar__btn-num">01</span><span class="tab-bar__btn-label">Media</span></a>
+      <a class="tab-bar__btn" href="#sec-gallery"><span class="tab-bar__btn-num">02</span><span class="tab-bar__btn-label">Gallery</span></a>
+      <a class="tab-bar__btn" href="#sec-testimonial"><span class="tab-bar__btn-num">03</span><span class="tab-bar__btn-label">Testimonial</span></a>
+      <a class="tab-bar__btn" href="#sec-feature"><span class="tab-bar__btn-num">04</span><span class="tab-bar__btn-label">Feature grid</span></a>
+      <a class="tab-bar__btn" href="#sec-incontent"><span class="tab-bar__btn-num">05</span><span class="tab-bar__btn-label">In‑content</span></a>
+      <a class="tab-bar__btn" href="#sec-shorts"><span class="tab-bar__btn-num">06</span><span class="tab-bar__btn-label">Shorts</span></a>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       00 · VIDEO HERO
+       ============================================================ -->
+  <section id="sec-hero" class="spec" data-screen-label="00 Video hero">
+    <div class="container">
+      <div class="spec__head">
+        <div>
+          <p class="spec__num">00 / Slice</p>
+          <h2 class="spec__title">Video hero</h2>
+        </div>
+        <div class="spec__notes">
+          <strong>Improvements over current</strong>
+          <ul>
+            <li>Programme hero gains a video-first variant — the existing photo-only treatment is preserved as a fallback when no video is available.</li>
+            <li>Play button uses the same square red affordance as every other video surface on the page.</li>
+            <li>Modal opens the standard gallery-aware lightbox with transcript and keyboard nav.</li>
+            <li>Overlay variant gives editorial pages a single-band hero with the title burned over the still.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="variant">
+        <p class="variant__label">Programme hero · stacked title + media band</p>
+        <div class="variant__body variant__body--bleed">
+          <section class="hero">
+            <div class="hero__title-band">
+              <div class="container">
+                <div class="hero__chip">LLB</div>
+                <h1 class="hero__title">Bachelor of Laws</h1>
+                <div class="hero__modes">
+                  <span class="hero__mode">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M2 20h20"/><path d="M9 16v4M15 16v4"/></svg>
+                    Study online
+                  </span>
+                  <span class="hero__mode">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                    In person at a teaching centre
+                  </span>
+                </div>
+                <p class="hero__intro">Set out on the path to becoming a lawyer with a flexible LLB programme that fits around you. Unlock a fast‑track route to graduate sooner if you already have a degree.</p>
+                <div class="hero__cta-row">
+                  <a href="#" class="hero__cta hero__cta--primary">Register your interest</a>
+                </div>
+              </div>
+            </div>
+            <div class="hero__media"
+                 data-video-id="BqUf4GMm8DQ"
+                 data-video-title="Inside the LLB: a typical week as a distance-learning student"
+                 data-video-transcript-id="transcript-llb-week"
+                 data-video-set="hero-llb">
+              <img src="assets/hero-llb.jpg" alt="">
+              <div class="hero__media-overlay" aria-hidden="true"></div>
+              <button type="button" class="hero__play-pill" aria-label="Learn about this course">
+                <span class="hero__play-pill__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+                <span class="hero__play-pill__label">Learn about this course</span>
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="variant">
+        <p class="variant__label">Overlay hero · title burned over the still</p>
+        <div class="variant__body variant__body--bleed">
+          <section class="hero hero--overlay">
+            <div class="hero__media"
+                 data-video-id="9j3yK76u4hU"
+                 data-video-title="Why I chose the University of London for my LLM"
+                 data-video-transcript-id="transcript-khadija"
+                 data-video-set="hero-llm">
+              <img src="assets/hero-llb.jpg" alt="">
+              <div class="hero__media-overlay" aria-hidden="true"></div>
+              <div class="hero__overlay-content">
+                <div class="hero__chip">LLM</div>
+                <h1 class="hero__title">Postgraduate Laws</h1>
+                <button type="button" class="hero__overlay-cta" aria-label="Watch hero video">
+                  <span class="btn-play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  </span>
+                  Watch the programme film
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       01 · MEDIA SLICE
+       ============================================================ -->
+  <section id="sec-media" class="spec" data-screen-label="01 Media slice">
+    <div class="container">
+      <div class="spec__head">
+        <div>
+          <p class="spec__num">01 / Slice</p>
+          <h2 class="spec__title">Media slice</h2>
+        </div>
+        <div class="spec__notes">
+          <strong>Improvements over current</strong>
+          <ul>
+            <li>Title moved above the player and styled as an editorial heading, not a small caption.</li>
+            <li>Caption supports a richer description (≤ 70 ch) and a credit line.</li>
+            <li>Optional transcript panel with timecodes — supports accessibility and GEO.</li>
+            <li><code>VideoObject</code> structured data emitted server‑side from the Media metadata.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="variant">
+        <p class="variant__label">Default · with transcript</p>
+        <div class="variant__body">
+      <div class="media-slice">
+        <h3 class="media-slice__title">Inside the LLB: a typical week as a distance‑learning student</h3>
+        <div class="media-slice__player"
+             data-video-id="BqUf4GMm8DQ"
+             data-video-title="Inside the LLB: a typical week as a distance-learning student"
+             data-video-transcript-id="transcript-llb-week"
+             data-video-set="media-llb">
+          <img src="https://i.ytimg.com/vi/BqUf4GMm8DQ/maxresdefault.jpg" alt="">
+          <button type="button" class="btn-play btn-play--lg" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+        <div class="media-slice__meta">
+          <p class="media-slice__caption">A walk‑through of how online LLB students structure their week — recorded lectures, weekly seminars, peer study groups, and the moots that bring case study work to life. Filmed with current students in Pakistan, Sri Lanka, and the UK.</p>
+        </div>
+
+        <details class="transcript">
+          <summary class="transcript__toggle">
+            <span>Read the transcript</span>
+            <span class="transcript__toggle-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </summary>
+          <div class="transcript__body">
+            <p><time>00:00</time>My week starts on Monday morning with the recorded lectures from the week's tutor — I usually watch them at 1.25× while I take notes.</p>
+            <p><time>00:42</time>By Wednesday I'm into the reading list. The online library is the thing that surprised me most — every case, every textbook, all there.</p>
+            <p><time>01:18</time>Thursday evenings are seminar nights. We've got students from twelve countries on my cohort and the discussions get into territory you wouldn't get at a single‑country campus.</p>
+            <p><time>02:03</time>Saturdays I do mooting practice with my study group — we meet on a video call, take a problem question, and argue both sides for an hour.</p>
+          </div>
+        </details>
+      </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       02 · GALLERY SLICE
+       ============================================================ -->
+  <section id="sec-gallery" class="spec spec--alt" data-screen-label="02 Gallery slice">
+    <div class="container">
+      <div class="spec__head">
+        <div>
+          <p class="spec__num">02 / Slice</p>
+          <h2 class="spec__title">Gallery slice</h2>
+        </div>
+        <div class="spec__notes">
+          <strong>Improvements over current</strong>
+          <ul>
+            <li>Video tiles surface a permanent square play button (top right) and a Video badge (bottom left).</li>
+            <li>Duration chip ("2:14") makes time commitment legible before clicking.</li>
+            <li>Photo tiles get a discreet "Photo" tag for symmetry, but no play affordance.</li>
+            <li>All tiles — photos and videos — open in the same gallery-aware modal. Left/right arrows step through every item in the set.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="variant">
+        <p class="variant__label">Image &amp; video carousel · "See" pattern</p>
+        <div class="variant__body variant__body--bleed">
+      <section class="gallery-band">
+<div class="container">
+          <h3 class="gallery-band__title">See life at the University of London</h3>
+
+          <div class="gallery-rail">
+
+            <a class="gallery-card" href="#"
+               data-video-id="ORK3fI-RL0k"
+               data-video-title="Campus tour: Senate House, London"
+               data-video-set="gallery">
+              <div class="gallery-card__media">
+                <img src="assets/photo-bsc-marketing.jpg" alt="Senate House, London">
+                <span class="gallery-card__action" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </div>
+              <p class="gallery-card__caption">Senate House — the heart of the University of London federation</p>
+            </a>
+
+            <a class="gallery-card" href="#"
+               data-photo-src="assets/photo-ifp-comp-sci.webp"
+               data-photo-title="A typical study setup — distance learning from Karachi"
+               data-photo-set="gallery">
+              <div class="gallery-card__media">
+                <img src="assets/photo-ifp-comp-sci.webp" alt="A student's study space in Karachi">
+                <span class="gallery-card__action" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </span>
+              </div>
+              <p class="gallery-card__caption">A typical study setup — distance learning from Karachi</p>
+            </a>
+
+            <a class="gallery-card" href="#"
+               data-video-id="_akGK_I_g40"
+               data-video-title="A day in Karachi: Khadija's LLB"
+               data-video-set="gallery">
+              <div class="gallery-card__media">
+                <img src="assets/photo-ba-english.jpg" alt="Khadija at her study space">
+                <span class="gallery-card__action" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </div>
+              <p class="gallery-card__caption">A day in Karachi with Khadija — LLB, second year</p>
+            </a>
+
+            <a class="gallery-card" href="#"
+               data-photo-src="assets/photo-bsc-comp-sci.webp"
+               data-photo-title="Inside the Online Library — every case, every textbook"
+               data-photo-set="gallery">
+              <div class="gallery-card__media">
+                <img src="assets/photo-bsc-comp-sci.webp" alt="Online library shelves">
+                <span class="gallery-card__action" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </span>
+              </div>
+              <p class="gallery-card__caption">Inside the Online Library — every case, every textbook</p>
+            </a>
+
+            <a class="gallery-card" href="#"
+               data-video-id="Eq9Y8eN8fPQ"
+               data-video-title="Graduation: Sri Lanka 2025"
+               data-video-set="gallery">
+              <div class="gallery-card__media">
+                <img src="assets/photo-global-mba.webp" alt="Graduation in Sri Lanka">
+                <span class="gallery-card__action" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </div>
+              <p class="gallery-card__caption">Graduation 2025, Colombo — a class of 312 students</p>
+            </a>
+
+            <a class="gallery-card" href="#"
+               data-video-id="WrmpEIbv5dI"
+               data-video-title="Maarij: study tips"
+               data-video-set="gallery">
+              <div class="gallery-card__media">
+                <img src="assets/photo-llm-paris.webp" alt="Maarij at desk">
+                <span class="gallery-card__action" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </div>
+              <p class="gallery-card__caption">Three things that worked — Maarij's study tips</p>
+            </a>
+
+            <a class="gallery-card" href="#"
+               data-photo-src="assets/photo-bsc-marketing.jpg"
+               data-photo-title="LLM graduation cohort — Bloomsbury, summer 2025"
+               data-photo-set="gallery">
+              <div class="gallery-card__media">
+                <img src="assets/photo-bsc-marketing.jpg" alt="LLM graduates">
+                <span class="gallery-card__action" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </span>
+              </div>
+              <p class="gallery-card__caption">LLM graduation cohort — Bloomsbury, summer 2025</p>
+            </a>
+
+          </div>
+
+          <div class="gallery-controls">
+            <div class="gallery-dots" role="tablist" aria-label="Gallery slide"></div>
+            <div class="gallery-arrows">
+              <button type="button" class="gallery-arrow" data-gallery-prev aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button type="button" class="gallery-arrow" data-gallery-next aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       03 · TESTIMONIAL SLICE — REBUILT (1, 2, 3 layouts)
+       ============================================================ -->
+  <section id="sec-testimonial" class="spec" data-screen-label="03 Testimonial slice rebuild">
+    <div class="container">
+      <div class="spec__head">
+        <div>
+          <p class="spec__num">03 / Slice</p>
+          <h2 class="spec__title">Testimonial slice, rebuilt</h2>
+        </div>
+        <div class="spec__notes">
+          <strong>Improvements over current</strong>
+          <ul>
+            <li>1 video → editorial side‑by‑side layout (was: awkward 2‑col).</li>
+            <li>2 videos → balanced two‑column grid (was: 3‑col with a gap).</li>
+            <li>3 videos → middle slot natively supports a 9:16 Short (was: cropped horizontally).</li>
+            <li>Modal: ←/→ keys, swipe, and prev/next arrows step through the set.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 1-UP -->
+      <div class="variant">
+        <p class="variant__label">Layout · 1 video</p>
+        <div class="variant__body">
+        <h3 class="slice-band__title">Hear from our students</h3>
+        <div class="t-grid t-grid--1up">
+          <article class="t-1up"
+                   data-video-id="9j3yK76u4hU"
+                   data-video-title="Why I chose the University of London for my LLM"
+                   data-video-transcript-id="transcript-khadija"
+                   data-video-set="testimonials-1up">
+            <div class="t-1up__media">
+              <img src="assets/thumb-llm-graduates.jpg" alt="LLM graduate">
+              <button type="button" class="btn-play btn-play--lg" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <div>
+              <blockquote class="t-1up__quote">&ldquo;The LLM gave me the credibility to walk into rooms I'd previously only watched from the doorway.&rdquo;</blockquote>
+              <p class="t-card__attr">Sara Ahmed
+                <span class="t-card__attr-meta">— LLM, 2024 · Pakistan</span>
+              </p>
+            </div>
+          </article>
+        </div>
+        </div>
+      </div>
+
+      <!-- 2-UP -->
+      <div class="variant">
+        <p class="variant__label">Layout · 2 videos</p>
+        <div class="variant__body">
+        <h3 class="slice-band__title">Hear from our students</h3>
+        <div class="t-grid t-grid--2up">
+
+          <article class="t-card"
+                   data-video-id="BqUf4GMm8DQ"
+                   data-video-title="Student stories: Khadija, LLB Law, Pakistan"
+                   data-video-transcript-id="transcript-khadija"
+                   data-video-set="testimonials-2up">
+            <div class="t-card__media">
+              <img src="assets/thumb-khadija.jpg" alt="Khadija">
+              <button type="button" class="btn-play t-card__play" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <blockquote class="t-card__quote">&ldquo;My favourite thing about the study experience has been meeting a diverse group of people from all backgrounds in Pakistan.&rdquo;</blockquote>
+            <p class="t-card__attr">Khadija Joher <span class="t-card__attr-meta">— LLB, Pakistan</span></p>
+          </article>
+
+          <article class="t-card"
+                   data-video-id="ORK3fI-RL0k"
+                   data-video-title="Alumni Inspiration: Nilmini, LLB, Sri Lanka"
+                   data-video-set="testimonials-2up">
+            <div class="t-card__media">
+              <img src="assets/thumb-nilmini.jpg" alt="Nilmini">
+              <button type="button" class="btn-play t-card__play" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <blockquote class="t-card__quote">&ldquo;My favourite thing was how the LLB made us think outside the box. It made you grow as an individual.&rdquo;</blockquote>
+            <p class="t-card__attr">Nilmini Kumari Fernando <span class="t-card__attr-meta">— LLB, Sri Lanka</span></p>
+          </article>
+
+        </div>
+        </div>
+      </div>
+
+      <!-- 3-UP with middle vertical Short -->
+      <div class="variant">
+        <p class="variant__label">Layout · 3 videos · 16:9 grid</p>
+        <div class="variant__body">
+        <h3 class="slice-band__title">Hear from our students</h3>
+        <div class="t-grid t-grid--3up">
+
+          <article class="t-card"
+                   data-video-id="_akGK_I_g40"
+                   data-video-title="Student stories: Khadija, LLB Law, Pakistan"
+                   data-video-transcript-id="transcript-khadija"
+                   data-video-set="testimonials-3up">
+            <div class="t-card__media">
+              <img src="assets/thumb-khadija.jpg" alt="Khadija">
+              <button type="button" class="btn-play t-card__play" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <blockquote class="t-card__quote">&ldquo;Meeting a diverse group of people from all backgrounds in Pakistan.&rdquo;</blockquote>
+            <p class="t-card__attr">Khadija Joher <span class="t-card__attr-meta">— LLB, Pakistan</span></p>
+          </article>
+
+          <article class="t-card"
+                   data-video-id="Eq9Y8eN8fPQ"
+                   data-video-title="Student stories: Farzad — LLB, Bangladesh"
+                   data-video-set="testimonials-3up">
+            <div class="t-card__media">
+              <img src="assets/thumb-ahmed.jpg" alt="Farzad">
+              <button type="button" class="btn-play t-card__play" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <blockquote class="t-card__quote">&ldquo;Sixty seconds: the moment everything clicked.&rdquo;</blockquote>
+            <p class="t-card__attr">Farzad Bin Raunak <span class="t-card__attr-meta">— LLB, Bangladesh</span></p>
+          </article>
+
+          <article class="t-card"
+                   data-video-id="WrmpEIbv5dI"
+                   data-video-title="Alumni stories: Ahmed, LLB Law, Pakistan"
+                   data-video-set="testimonials-3up">
+            <div class="t-card__media">
+              <img src="assets/thumb-ahmed.jpg" alt="Ahmed">
+              <button type="button" class="btn-play t-card__play" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <blockquote class="t-card__quote">&ldquo;My degree laid the perfect foundation for my chosen career.&rdquo;</blockquote>
+            <p class="t-card__attr">Ahmed Imran Dewan <span class="t-card__attr-meta">— LLB, Pakistan</span></p>
+          </article>
+
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       04 · FEATURE GRID SLICE
+       ============================================================ -->
+  <section id="sec-feature" class="spec spec--alt" data-screen-label="04 Feature grid slice">
+    <div class="container">
+      <div class="spec__head">
+        <div>
+          <p class="spec__num">04 / Slice</p>
+          <h2 class="spec__title">Feature grid slice</h2>
+        </div>
+        <div class="spec__notes">
+          <strong>Improvements over current</strong>
+          <ul>
+            <li>Hero feature gets ~50% of the row, with three same-height stacked items in the right column.</li>
+            <li>Section header pairs a serif title with a small &ldquo;Learn more&rdquo; link and red arrow disc, top-right.</li>
+            <li>Italic serif &ldquo;Study&rdquo; tag with a hand-drawn brush underline — categorical at a glance.</li>
+            <li>Tiles are content-first; if a tile has video, a small play disc appears in the image corner.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="variant">
+        <p class="variant__label">1+3 asymmetric · &ldquo;Study with us&rdquo;</p>
+        <div class="variant__body variant__body--bleed">
+      <section class="study-band">
+        <div class="container">
+
+          <header class="study-band__head">
+            <h3 class="study-band__title">Study with us</h3>
+            <a class="study-band__more" href="#">
+              <span>Learn more about studying with us</span>
+              <span class="study-band__more-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="17" y2="12"/><polyline points="13 8 17 12 13 16"/></svg>
+              </span>
+            </a>
+          </header>
+
+          <div class="study-grid">
+
+            <!-- HERO FEATURE -->
+            <a class="study-hero" href="#"
+               data-video-id="9j3yK76u4hU"
+               data-video-title="Why study an LLM online?"
+               data-video-set="study">
+              <div class="study-hero__media">
+                <img src="assets/photo-global-mba.webp" alt="Students in a seminar room at the University of London">
+                <span class="study-hero__play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </div>
+              <div class="study-hero__body">
+                <h4 class="study-hero__title">Choose from a range of specialisms and advance your legal career with our flexible online LLM</h4>
+                <p class="study-hero__caption">Applications close on Tuesday 5 May — apply online.</p>
+                <span class="study-tag">
+                  <svg class="study-tag__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 1.5 8.5 12 14l8-4.21V15h2V8.5L12 3zM5 12.06v3.5C5 17.66 8.13 19 12 19s7-1.34 7-3.44v-3.5l-7 3.69-7-3.69z"/></svg>
+                  <span class="study-tag__label">Study</span>
+                </span>
+              </div>
+            </a>
+
+            <!-- STACKED RIGHT COLUMN -->
+            <div class="study-stack">
+
+              <a class="study-row" href="#">
+                <div class="study-row__media">
+                  <img src="assets/photo-llm-paris.webp" alt="Human Rights Consortium event">
+                </div>
+                <div class="study-row__body">
+                  <h4 class="study-row__title">Learn from experts at the Human Rights Consortium with our Human Rights programmes</h4>
+                  <span class="study-tag">
+                    <svg class="study-tag__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 1.5 8.5 12 14l8-4.21V15h2V8.5L12 3zM5 12.06v3.5C5 17.66 8.13 19 12 19s7-1.34 7-3.44v-3.5l-7 3.69-7-3.69z"/></svg>
+                  <span class="study-tag__label">Study</span>
+                  </span>
+                </div>
+              </a>
+
+              <a class="study-row" href="#">
+                <div class="study-row__media">
+                  <img src="assets/photo-ba-english.jpg" alt="Student in a library">
+                </div>
+                <div class="study-row__body">
+                  <h4 class="study-row__title">Develop skills to kickstart your career with our undergraduate English programmes</h4>
+                  <span class="study-tag">
+                    <svg class="study-tag__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 1.5 8.5 12 14l8-4.21V15h2V8.5L12 3zM5 12.06v3.5C5 17.66 8.13 19 12 19s7-1.34 7-3.44v-3.5l-7 3.69-7-3.69z"/></svg>
+                  <span class="study-tag__label">Study</span>
+                  </span>
+                </div>
+              </a>
+
+              <a class="study-row" href="#">
+                <div class="study-row__media">
+                  <img src="assets/photo-bsc-marketing.jpg" alt="MBA cohort">
+                </div>
+                <div class="study-row__body">
+                  <h4 class="study-row__title">Take your career to the next level with our accredited Global MBA programme</h4>
+                  <span class="study-tag">
+                    <svg class="study-tag__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 1.5 8.5 12 14l8-4.21V15h2V8.5L12 3zM5 12.06v3.5C5 17.66 8.13 19 12 19s7-1.34 7-3.44v-3.5l-7 3.69-7-3.69z"/></svg>
+                  <span class="study-tag__label">Study</span>
+                  </span>
+                </div>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       05 · IN-CONTENT VIDEO
+       ============================================================ -->
+  <section id="sec-incontent" class="spec" data-screen-label="05 In-content video">
+    <div class="container">
+      <div class="spec__head">
+        <div>
+          <p class="spec__num">05 / Slice</p>
+          <h2 class="spec__title">In‑content video</h2>
+        </div>
+        <div class="spec__notes">
+          <strong>Improvements over current</strong>
+          <ul>
+            <li>Player constrained to body measure (max 720 px wide) so it sits cleanly in copy.</li>
+            <li>Caption uses the red keyline treatment matching attribution patterns elsewhere.</li>
+            <li>Optional &ldquo;Recorded live&rdquo; / topic tag at top‑left of the player.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="variant">
+        <p class="variant__label">Inline article · video embedded in copy</p>
+        <div class="variant__body">
+      <article class="article">
+        <p>The University of London's distance‑learning model isn't a recent pivot — it's been running for over 160 years. Here's what a week looks like for one of our LLB students.</p>
+
+        <p>When students sign up for the LLB programme, they often picture textbooks and silent libraries. The reality is closer to a well‑run study group that happens to span four time zones. We asked Khadija — second year, based in Karachi — to record a short walk‑through of her week so prospective students can see the rhythm of the course, not just read about it.</p>
+
+        <div class="inline-video"
+             data-video-id="BqUf4GMm8DQ"
+             data-video-title="A week with Khadija"
+             data-video-transcript-id="transcript-khadija"
+             data-video-set="article">
+          <div class="inline-video__player">
+            <img src="assets/thumb-khadija.jpg" alt="">
+            <span class="inline-video__live-tag">Student diary</span>
+            <button type="button" class="btn-play btn-play--lg" aria-label="Play video">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <p class="inline-video__cap"><strong>A week with Khadija.</strong> Filmed in Karachi, March 2026. Running time 3:42.</p>
+        </div>
+
+        <h3>What surprised her</h3>
+        <p>The seminar discussions, she says — twelve countries on the cohort and a tutor who refuses to let any single perspective dominate. The mooting practice on Saturday afternoons. And the fact that &ldquo;the online library is genuinely better than the one I used as an undergraduate, in person.&rdquo;</p>
+      </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       06 · VERTICAL / SHORTS CAROUSEL
+       ============================================================ -->
+  <section id="sec-shorts" class="spec spec--alt" data-screen-label="06 Vertical / Shorts">
+    <div class="container">
+      <div class="spec__head">
+        <div>
+          <p class="spec__num">06 / New pattern</p>
+          <h2 class="spec__title">Vertical &amp; Shorts</h2>
+        </div>
+        <div class="spec__notes">
+          <strong>Why this is new</strong>
+          <ul>
+            <li>YouTube Shorts and event clips are vertical by default; horizontal embeds crop them.</li>
+            <li>Modal switches to a portrait (9:16) frame when <code>data-video-vertical</code> is set.</li>
+            <li>Mobile‑first: the same grid stacks neatly into a single‑column scroll on phones.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="variant">
+        <p class="variant__label">9:16 Shorts carousel · vertical modal</p>
+        <div class="variant__body">
+      <div class="shorts">
+        <h3 class="slice-band__title">Stories in 60 seconds</h3>
+
+        <div class="shorts-rail">
+
+        <a class="short-card" href="#"
+           data-video-id="fA6xiKNlAFc"
+           data-video-title="UoL Short"
+           data-video-vertical="true"
+           data-video-set="shorts">
+          <img src="https://i.ytimg.com/vi/fA6xiKNlAFc/maxresdefault.jpg" alt="">
+          <span class="short-card__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <div class="short-card__overlay">
+            <h3 class="short-card__title">Inside University of London</h3>
+            <span class="short-card__meta">University of London</span>
+          </div>
+        </a>
+
+        <a class="short-card" href="#"
+           data-video-id="dAUcYtlvLhs"
+           data-video-title="UoL Short"
+           data-video-vertical="true"
+           data-video-set="shorts">
+          <img src="https://i.ytimg.com/vi/dAUcYtlvLhs/maxresdefault.jpg" alt="">
+          <span class="short-card__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <div class="short-card__overlay">
+            <h3 class="short-card__title">A moment from the cohort</h3>
+            <span class="short-card__meta">University of London</span>
+          </div>
+        </a>
+
+        <a class="short-card" href="#"
+           data-video-id="v_EqbGvbODg"
+           data-video-title="UoL Short"
+           data-video-vertical="true"
+           data-video-set="shorts">
+          <img src="https://i.ytimg.com/vi/v_EqbGvbODg/maxresdefault.jpg" alt="">
+          <span class="short-card__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <div class="short-card__overlay">
+            <h3 class="short-card__title">Sixty seconds with a student</h3>
+            <span class="short-card__meta">University of London</span>
+          </div>
+        </a>
+
+        <a class="short-card" href="#"
+           data-video-id="1Xhw4K77f48"
+           data-video-title="UoL Short"
+           data-video-vertical="true"
+           data-video-set="shorts">
+          <img src="https://i.ytimg.com/vi/1Xhw4K77f48/maxresdefault.jpg" alt="">
+          <span class="short-card__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <div class="short-card__overlay">
+            <h3 class="short-card__title">Around campus</h3>
+            <span class="short-card__meta">University of London</span>
+          </div>
+        </a>
+
+        <a class="short-card" href="#"
+           data-video-id="8fq3XrTccKo"
+           data-video-title="UoL Short"
+           data-video-vertical="true"
+           data-video-set="shorts">
+          <img src="https://i.ytimg.com/vi/8fq3XrTccKo/maxresdefault.jpg" alt="">
+          <span class="short-card__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <div class="short-card__overlay">
+            <h3 class="short-card__title">Voices from the cohort</h3>
+            <span class="short-card__meta">University of London</span>
+          </div>
+        </a>
+
+        <a class="short-card" href="#"
+           data-video-id="QdsbRLRSIgE"
+           data-video-title="UoL Short"
+           data-video-vertical="true"
+           data-video-set="shorts">
+          <img src="https://i.ytimg.com/vi/QdsbRLRSIgE/maxresdefault.jpg" alt="">
+          <span class="short-card__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <div class="short-card__overlay">
+            <h3 class="short-card__title">Welcome week</h3>
+            <span class="short-card__meta">University of London</span>
+          </div>
+        </a>
+
+        </div>
+
+        <div class="shorts-controls">
+          <div class="shorts-dots" role="tablist" aria-label="Shorts slide"></div>
+          <div class="shorts-arrows">
+            <button type="button" class="shorts-arrow" data-shorts-prev aria-label="Previous">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button type="button" class="shorts-arrow" data-shorts-next aria-label="Next">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      Slice components draft · April 2026 · drop‑in replacements for the existing UOL Drupal slices.
+    </div>
+  </footer>
+
+
+  <!-- =============================== Modal =============================== -->
+  <div class="modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+
+    <span class="modal__counter" id="video-modal-counter"></span>
+    <button type="button" class="modal__close" data-close aria-label="Close">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <div class="modal__shell">
+      <div class="modal__panel" id="video-modal-panel">
+        <button type="button" class="modal__nav modal__nav--prev" id="video-modal-prev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button type="button" class="modal__nav modal__nav--next" id="video-modal-next" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="modal__frame" id="video-modal-frame"></div>
+      </div>
+      <p class="modal__title" id="video-modal-title"></p>
+      <button type="button" class="modal__transcript-toggle" id="video-modal-transcript-toggle" aria-expanded="false" aria-controls="video-modal-transcript">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        <span class="modal__transcript-toggle-label">Read transcript</span>
+      </button>
+      <div class="modal__transcript" id="video-modal-transcript" hidden></div>
+    </div>
+  </div>
+
+  <!-- Transcripts (hidden source — Drupal would store these as a field on the video paragraph) -->
+  <template id="transcript-llb-week">
+    <p><strong>00:00</strong> — Welcome. I'm going to show you what a typical week looks like as a distance‑learning LLB student.</p>
+    <p><strong>00:18</strong> — Most modules release a new video lecture on Monday morning. I'll usually watch the first two before lunch and make rough notes.</p>
+    <p><strong>00:42</strong> — The Online Library is where I do most of my legwork. Cases, journal articles, textbooks — everything's there. I don't buy physical books any more.</p>
+    <p><strong>01:30</strong> — Tuesday and Wednesday I'll spend on the formative tasks. They're not assessed, but they tell me whether I've understood the material before I move on.</p>
+    <p><strong>02:05</strong> — Thursday is the live tutorial. About forty of us on the call, the tutor walks us through a scenario and we answer in real time. It's the closest thing to a seminar.</p>
+    <p><strong>02:48</strong> — Fridays I keep deliberately light — readings only, no writing. By the time the weekend comes I'm ready to draft the week's essay.</p>
+    <p><strong>03:30</strong> — That's roughly what each week looks like. It's flexible — I work full‑time, so I move things around — but the structure is what stops it from drifting.</p>
+  </template>
+
+  <template id="transcript-khadija">
+    <p><strong>00:00</strong> — My name is Khadija. I'm in my second year of the LLB, studying from Karachi.</p>
+    <p><strong>00:14</strong> — I chose the University of London because I wanted a UK law degree without leaving home. My family is here, my work is here.</p>
+    <p><strong>00:42</strong> — A typical study day is split. I work in a law firm in the morning, then I study from about six in the evening until ten.</p>
+    <p><strong>01:15</strong> — The hardest part was learning to manage my own time. There's no one telling you when to start.</p>
+    <p><strong>01:48</strong> — But the support is there if you ask. The student forums, the tutors — you have to reach out, but they always respond.</p>
+    <p><strong>02:20</strong> — I'd tell anyone considering it: it's harder than you think, but it's also more flexible than you think. You can build it around your life.</p>
+  </template>
+
+<script>
+(function(){
+  var modal = document.getElementById('video-modal');
+  var panel = document.getElementById('video-modal-panel');
+  var frame = document.getElementById('video-modal-frame');
+  var titleEl = document.getElementById('video-modal-title');
+  var counterEl = document.getElementById('video-modal-counter');
+  var prevBtn = document.getElementById('video-modal-prev');
+  var nextBtn = document.getElementById('video-modal-next');
+  var transcriptToggle = document.getElementById('video-modal-transcript-toggle');
+  var transcriptToggleLabel = transcriptToggle.querySelector('.modal__transcript-toggle-label');
+  var transcriptPanel = document.getElementById('video-modal-transcript');
+  var lastFocus = null;
+  var currentSet = [];   // array of {id, title, vertical}
+  var currentIdx = 0;
+
+  function nodeToItem(n){
+    if (n.hasAttribute('data-photo-src')) {
+      return {
+        kind: 'image',
+        src: n.getAttribute('data-photo-src'),
+        title: n.getAttribute('data-photo-title') || '',
+        node: n
+      };
+    }
+    return {
+      kind: 'video',
+      id: n.getAttribute('data-video-id'),
+      title: n.getAttribute('data-video-title') || '',
+      vertical: n.getAttribute('data-video-vertical') === 'true',
+      transcriptId: n.getAttribute('data-video-transcript-id') || '',
+      node: n
+    };
+  }
+
+  function buildSet(setKey){
+    // Match both video and photo cards in a single set, preserving DOM order.
+    var nodes = document.querySelectorAll(
+      '[data-video-set="' + setKey + '"], [data-photo-set="' + setKey + '"]'
+    );
+    var set = [];
+    nodes.forEach(function(n){ set.push(nodeToItem(n)); });
+    return set;
+  }
+
+  function render(){
+    if (!currentSet.length) return;
+    var item = currentSet[currentIdx];
+    var isVertical = item.kind === 'video' && !!item.vertical;
+    var isImage = item.kind === 'image';
+    panel.classList.toggle('modal__panel--vertical', isVertical);
+    panel.classList.toggle('modal__panel--image', isImage);
+    frame.classList.toggle('modal__frame--vertical', isVertical);
+    frame.classList.toggle('modal__frame--image', isImage);
+    titleEl.textContent = item.title || '';
+    counterEl.textContent = currentSet.length > 1 ? (currentIdx + 1) + ' / ' + currentSet.length : '';
+    var hasNav = currentSet.length > 1;
+    prevBtn.style.display = hasNav ? '' : 'none';
+    nextBtn.style.display = hasNav ? '' : 'none';
+    // Transcript availability — only on videos with a matching template
+    var tplId = item.kind === 'video' ? item.transcriptId : '';
+    var tpl = tplId ? document.getElementById(tplId) : null;
+    if (tpl) {
+      transcriptPanel.innerHTML = '';
+      transcriptPanel.appendChild(tpl.content.cloneNode(true));
+      transcriptToggle.classList.add('is-visible');
+    } else {
+      transcriptPanel.innerHTML = '';
+      transcriptToggle.classList.remove('is-visible');
+    }
+    // Always collapse on item change
+    transcriptToggle.setAttribute('aria-expanded', 'false');
+    transcriptToggleLabel.textContent = 'Read transcript';
+    transcriptPanel.hidden = true;
+
+    if (isImage) {
+      frame.innerHTML = '<img class="modal__img" src="' + item.src.replace(/"/g,'&quot;') + '" alt="' + (item.title || '').replace(/"/g,'&quot;') + '">';
+    } else {
+      frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + encodeURIComponent(item.id) + '?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="' + item.title.replace(/"/g,'&quot;') + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+        + '<a class="modal__yt-fallback" href="https://www.youtube.com/watch?v=' + encodeURIComponent(item.id) + '" target="_blank" rel="noopener">'
+        + '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M19.6 6.2c-.2-.8-.8-1.4-1.6-1.6C16.4 4.2 12 4.2 12 4.2s-4.4 0-6 .4c-.8.2-1.4.8-1.6 1.6C4 7.8 4 12 4 12s0 4.2.4 5.8c.2.8.8 1.4 1.6 1.6 1.6.4 6 .4 6 .4s4.4 0 6-.4c.8-.2 1.4-.8 1.6-1.6.4-1.6.4-5.8.4-5.8s0-4.2-.4-5.8zM10 15V9l5.2 3L10 15z"/></svg>'
+        + 'Watch on YouTube</a>';
+    }
+  }
+
+  function open(trigger){
+    var setKey = trigger.getAttribute('data-video-set') || trigger.getAttribute('data-photo-set');
+    var hasMedia = trigger.hasAttribute('data-video-id') || trigger.hasAttribute('data-photo-src');
+    if (!hasMedia) return;
+    lastFocus = document.activeElement;
+    if (setKey) {
+      currentSet = buildSet(setKey);
+      currentIdx = Math.max(0, currentSet.findIndex(function(x){ return x.node === trigger; }));
+    } else {
+      currentSet = [nodeToItem(trigger)];
+      currentIdx = 0;
+    }
+    render();
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+  }
+  function close(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    frame.innerHTML = '';
+    document.documentElement.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function step(delta){
+    if (currentSet.length < 2) return;
+    currentIdx = (currentIdx + delta + currentSet.length) % currentSet.length;
+    render();
+  }
+
+  document.addEventListener('click', function(e){
+    var trigger = e.target.closest('[data-video-id], [data-photo-src]');
+    if (trigger) {
+      e.preventDefault();
+      open(trigger);
+      return;
+    }
+    if (e.target.closest('#video-modal-prev')) { step(-1); return; }
+    if (e.target.closest('#video-modal-next')) { step(1); return; }
+    if (e.target.closest('#video-modal-transcript-toggle')) {
+      var expanded = transcriptToggle.getAttribute('aria-expanded') === 'true';
+      transcriptToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      transcriptToggleLabel.textContent = expanded ? 'Read transcript' : 'Hide transcript';
+      transcriptPanel.hidden = expanded;
+      return;
+    }
+    if (e.target.closest('[data-close]')) close();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (!modal.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === 'ArrowRight') step(1);
+  });
+
+  // Touch swipe
+  var touchX = null;
+  modal.addEventListener('touchstart', function(e){ touchX = e.touches[0].clientX; }, {passive: true});
+  modal.addEventListener('touchend', function(e){
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+    touchX = null;
+  }, {passive: true});
+
+  // ---------- Gallery carousel arrows + dots ----------
+  var gallery = document.querySelector('.gallery-rail');
+  var galPrev = document.querySelector('[data-gallery-prev]');
+  var galNext = document.querySelector('[data-gallery-next]');
+  var galDots = document.querySelector('.gallery-dots');
+  if (gallery && galPrev && galNext) {
+    var cards = Array.prototype.slice.call(gallery.querySelectorAll('.gallery-card'));
+
+    // Build dots
+    function metrics(){
+      var first = cards[0];
+      if (!first) return { gap: 0, w: 0, step: 0, perStep: 1, numSteps: 1 };
+      var styles = getComputedStyle(gallery);
+      var gap = parseFloat(styles.columnGap || styles.gap) || 18;
+      var w = first.getBoundingClientRect().width;
+      var perStep = Math.max(1, Math.floor((gallery.clientWidth + gap) / (w + gap)));
+      var numSteps = Math.max(1, Math.ceil(cards.length / perStep));
+      return { gap: gap, w: w, step: (w + gap) * perStep, perStep: perStep, numSteps: numSteps };
+    }
+
+    var dots = [];
+    function buildDots(){
+      if (!galDots) return;
+      var m = metrics();
+      if (dots.length === m.numSteps) return;
+      galDots.innerHTML = '';
+      for (var i = 0; i < m.numSteps; i++) {
+        (function(idx){
+          var d = document.createElement('button');
+          d.type = 'button';
+          d.className = 'gallery-dot';
+          d.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+          d.addEventListener('click', function(){
+            var mm = metrics();
+            var cardIdx = Math.min(cards.length - 1, idx * mm.perStep);
+            var c = cards[cardIdx];
+            if (!c) return;
+            gallery.scrollTo({ left: c.offsetLeft - gallery.offsetLeft, behavior: 'smooth' });
+          });
+          galDots.appendChild(d);
+        })(i);
+      }
+      dots = Array.prototype.slice.call(galDots.querySelectorAll('.gallery-dot'));
+    }
+
+    function railStep(dir){
+      var m = metrics();
+      if (!m.step) return;
+      gallery.scrollBy({ left: dir * m.step, behavior: 'smooth' });
+    }
+    function update(){
+      var maxScroll = gallery.scrollWidth - gallery.clientWidth - 1;
+      galPrev.disabled = gallery.scrollLeft <= 1;
+      galNext.disabled = gallery.scrollLeft >= maxScroll;
+
+      buildDots();
+      if (!dots.length) return;
+      var m = metrics();
+      var stepIdx = m.step ? Math.round(gallery.scrollLeft / m.step) : 0;
+      stepIdx = Math.max(0, Math.min(m.numSteps - 1, stepIdx));
+      dots.forEach(function(d, i){
+        if (i === stepIdx) d.setAttribute('aria-current', 'true');
+        else d.removeAttribute('aria-current');
+      });
+    }
+    galPrev.addEventListener('click', function(){ railStep(-1); });
+    galNext.addEventListener('click', function(){ railStep(1); });
+    gallery.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', function(){ dots = []; update(); });
+    update();
+  }
+
+  // ---------- Shorts carousel arrows + dots ----------
+  var shortsRail = document.querySelector('.shorts-rail');
+  var shortsPrev = document.querySelector('[data-shorts-prev]');
+  var shortsNext = document.querySelector('[data-shorts-next]');
+  var shortsDotsEl = document.querySelector('.shorts-dots');
+  if (shortsRail && shortsPrev && shortsNext) {
+    var sCards = Array.prototype.slice.call(shortsRail.querySelectorAll('.short-card'));
+
+    function sMetrics(){
+      var first = sCards[0];
+      if (!first) return { gap: 0, w: 0, step: 0, perStep: 1, numSteps: 1 };
+      var styles = getComputedStyle(shortsRail);
+      var gap = parseFloat(styles.columnGap || styles.gap) || 16;
+      var w = first.getBoundingClientRect().width;
+      var perStep = Math.max(1, Math.floor((shortsRail.clientWidth + gap) / (w + gap)));
+      var numSteps = Math.max(1, Math.ceil(sCards.length / perStep));
+      return { gap: gap, w: w, step: (w + gap) * perStep, perStep: perStep, numSteps: numSteps };
+    }
+
+    var sDots = [];
+    function buildSDots(){
+      if (!shortsDotsEl) return;
+      var m = sMetrics();
+      if (sDots.length === m.numSteps) return;
+      shortsDotsEl.innerHTML = '';
+      for (var i = 0; i < m.numSteps; i++) {
+        (function(idx){
+          var d = document.createElement('button');
+          d.type = 'button';
+          d.className = 'shorts-dot';
+          d.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+          d.addEventListener('click', function(){
+            var mm = sMetrics();
+            var cardIdx = Math.min(sCards.length - 1, idx * mm.perStep);
+            var c = sCards[cardIdx];
+            if (!c) return;
+            shortsRail.scrollTo({ left: c.offsetLeft - shortsRail.offsetLeft, behavior: 'smooth' });
+          });
+          shortsDotsEl.appendChild(d);
+        })(i);
+      }
+      sDots = Array.prototype.slice.call(shortsDotsEl.querySelectorAll('.shorts-dot'));
+    }
+
+    function sStep(dir){
+      var m = sMetrics();
+      if (!m.step) return;
+      shortsRail.scrollBy({ left: dir * m.step, behavior: 'smooth' });
+    }
+    function sUpdate(){
+      var maxScroll = shortsRail.scrollWidth - shortsRail.clientWidth - 1;
+      shortsPrev.disabled = shortsRail.scrollLeft <= 1;
+      shortsNext.disabled = shortsRail.scrollLeft >= maxScroll;
+      buildSDots();
+      if (!sDots.length) return;
+      var m = sMetrics();
+      var stepIdx = m.step ? Math.round(shortsRail.scrollLeft / m.step) : 0;
+      stepIdx = Math.max(0, Math.min(m.numSteps - 1, stepIdx));
+      sDots.forEach(function(d, i){
+        if (i === stepIdx) d.setAttribute('aria-current', 'true');
+        else d.removeAttribute('aria-current');
+      });
+    }
+    shortsPrev.addEventListener('click', function(){ sStep(-1); });
+    shortsNext.addEventListener('click', function(){ sStep(1); });
+    shortsRail.addEventListener('scroll', sUpdate, { passive: true });
+    window.addEventListener('resize', function(){ sDots = []; sUpdate(); });
+    sUpdate();
+  }
+
+  // ---------- Tab bar: sticky scroll-spy ----------
+  var tabBar = document.getElementById('component-tabs');
+  if (tabBar) {
+    var btns = Array.prototype.slice.call(tabBar.querySelectorAll('.tab-bar__btn'));
+    var sections = btns.map(function(b){
+      var id = b.getAttribute('href').slice(1);
+      return document.getElementById(id);
+    });
+
+    function setActive(idx){
+      btns.forEach(function(b, i){
+        if (i === idx) b.setAttribute('aria-current', 'true');
+        else b.removeAttribute('aria-current');
+      });
+    }
+
+    function onScroll(){
+      // shadow when stuck
+      var top = tabBar.getBoundingClientRect().top;
+      tabBar.classList.toggle('is-stuck', top <= 0);
+
+      // active section: last whose top is above the tab bar bottom
+      var threshold = (tabBar.getBoundingClientRect().bottom || 56) + 24;
+      var activeIdx = 0;
+      for (var i = 0; i < sections.length; i++) {
+        var s = sections[i];
+        if (!s) continue;
+        if (s.getBoundingClientRect().top <= threshold) activeIdx = i;
+      }
+      setActive(activeIdx);
+    }
+
+    // Smooth scroll w/ tab-bar offset
+    btns.forEach(function(b){
+      b.addEventListener('click', function(e){
+        var id = b.getAttribute('href').slice(1);
+        var target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        var barH = tabBar.offsetHeight || 56;
+        var y = target.getBoundingClientRect().top + window.pageYOffset - barH + 1;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        history.replaceState(null, '', '#' + id);
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  }
+})();
+</script>
+
+</body>
+</html>
