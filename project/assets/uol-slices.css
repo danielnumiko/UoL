@@ -382,6 +382,7 @@
 .gallery-card__action {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2;
   width: 56px; height: 56px;
+  border-radius: 50%;
   background: var(--theme-primary);
   color: #fff;
   display: flex; align-items: center; justify-content: center;
@@ -755,7 +756,7 @@
 .short-card__play {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   width: 64px; height: 64px;
-  border-radius: 18px;
+  border-radius: 50%;
   background: #FF0000; color: #fff;
   display: flex; align-items: center; justify-content: center;
   z-index: 3;
@@ -867,6 +868,7 @@
 .study-hero__play {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2;
   width: 64px; height: 64px;
+  border-radius: 50%;
   background: var(--theme-primary);
   color: #fff;
   display: flex; align-items: center; justify-content: center;

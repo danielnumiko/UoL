@@ -189,11 +189,12 @@ h1,h2,h3,h4,h5,h6 { color: var(--color-blue-800); margin: 0; }
 .btn--outline { background: transparent; color: var(--color-blue-800); border-color: var(--color-blue-800); }
 .btn--outline:hover { background: var(--color-blue-800); color: #fff; }
 
-/* Square red play (UOL standard) */
+/* Circular red play (UOL standard) */
 .btn-play {
   flex-shrink: 0;
   display: inline-flex; align-items: center; justify-content: center;
   width: 44px; height: 44px;
+  border-radius: 50%;
   background: var(--theme-primary); color: #fff;
   transition: background-color .2s ease;
 }
