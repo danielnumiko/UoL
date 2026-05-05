@@ -101,9 +101,9 @@
   transform: translate(-50%, -50%);
   z-index: 2;
   display: inline-flex; align-items: center;
-  gap: 14px;
-  padding: 8px 28px 8px 12px;
-  border: 1px solid rgba(255,255,255,.45);
+  gap: 18px;
+  padding: 18px 40px 18px 18px;
+  border: 0;
   border-radius: 0;
   background: rgba(255,255,255,.18);
   backdrop-filter: blur(16px) saturate(160%);
@@ -200,7 +200,7 @@
 @media (max-width: 720px){
   .hero__title-band { padding: 48px 0 40px; }
   .hero__modes { gap: 18px; }
-  .hero__media-play { gap: 10px; padding: 8px 22px 8px 8px; }
+  .hero__media-play { gap: 12px; padding: 12px 26px 12px 12px; }
   .hero__media-play-label { font-size: 17px; }
 }
 
