@@ -95,58 +95,65 @@
     linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,.30) 100%);
   pointer-events: none;
 }
-/* Inline play affordance — red square + italic caption (UoL programme hero pattern) */
+/* Hero play affordance — circular disc + caption underneath
+   Deliberately not a square+label "button": that visual fights the
+   primary CTA in the title band above. Universal video-play shape. */
 .hero__media-play {
   position: absolute; left: 50%; top: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  display: inline-flex; align-items: stretch;
-  background: var(--theme-primary);
-  box-shadow: 0 16px 40px rgba(0,0,0,.45);
-  cursor: pointer;
+  display: inline-flex; flex-direction: column; align-items: center;
+  gap: 14px;
+  background: transparent;
   border: 0;
   padding: 0;
-  transition: background-color .2s ease, transform .2s ease;
+  cursor: pointer;
   color: #fff;
 }
+.hero__media-play-disc {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.96);
+  color: var(--theme-primary);
+  box-shadow: 0 18px 44px rgba(0,0,0,.45);
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+.hero__media-play-disc svg { width: 34px; height: 34px; margin-left: 4px; }
 /* Idle pulse ring — motion-safe */
-.hero__media-play::before {
+.hero__media-play-disc::before {
   content: "";
   position: absolute; inset: 0;
-  background: var(--theme-primary);
-  z-index: -1;
-  opacity: .55;
+  border-radius: inherit;
+  border: 2px solid rgba(255,255,255,.85);
   animation: heroPlayPulse 2.2s ease-out infinite;
   pointer-events: none;
 }
 @keyframes heroPlayPulse {
-  0%   { transform: scale(1);    opacity: .55; }
-  70%  { transform: scale(1.45); opacity: 0;   }
-  100% { transform: scale(1.45); opacity: 0;   }
+  0%   { transform: scale(1);    opacity: .85; }
+  70%  { transform: scale(1.6);  opacity: 0;   }
+  100% { transform: scale(1.6);  opacity: 0;   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero__media-play::before { animation: none; opacity: 0; }
+  .hero__media-play-disc::before { animation: none; opacity: 0; }
 }
-.hero__media-play .btn-play {
-  width: 84px; height: 84px;
-  background: transparent;
-  box-shadow: none;
-  flex-shrink: 0;
-}
-.hero__media-play .btn-play svg { width: 30px; height: 30px; margin-left: 4px; }
 .hero__media-play-label {
-  display: inline-flex; align-items: center;
-  padding: 0 32px 0 10px;
   font-family: var(--f-freight);
   font-style: italic;
   font-weight: 400;
   font-size: 22px;
   letter-spacing: .005em;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.55);
   white-space: nowrap;
 }
-.hero__media:hover .hero__media-play,
-.hero__media-play:hover { background: var(--color-blue-800); }
-.hero__media:hover .hero__media-play { transform: translate(-50%, -50%) scale(1.04); }
+.hero__media:hover .hero__media-play-disc,
+.hero__media-play:hover .hero__media-play-disc {
+  background: var(--theme-primary);
+  color: #fff;
+  transform: scale(1.05);
+}
 
 /* Breadcrumb strip between bands (matches LLB pattern) */
 .hero__breadcrumb {
@@ -207,9 +214,10 @@
 @media (max-width: 720px){
   .hero__title-band { padding: 48px 0 40px; }
   .hero__modes { gap: 18px; }
-  .hero__media-play .btn-play { width: 64px; height: 64px; }
-  .hero__media-play .btn-play svg { width: 24px; height: 24px; }
-  .hero__media-play-label { font-size: 17px; padding: 0 22px 0 8px; }
+  .hero__media-play { gap: 10px; }
+  .hero__media-play-disc { width: 76px; height: 76px; }
+  .hero__media-play-disc svg { width: 28px; height: 28px; }
+  .hero__media-play-label { font-size: 17px; }
 }
 
 /* Variant B · overlay hero (one-band) */
