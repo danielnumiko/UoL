@@ -81,7 +81,6 @@
   height: clamp(360px, 44vw, 560px);
   background: var(--color-grey-300);
   overflow: hidden;
-  cursor: pointer;
 }
 .hero__media img {
   position: absolute; inset: 0;
@@ -148,7 +147,6 @@
   text-shadow: 0 2px 12px rgba(0,0,0,.55);
   white-space: nowrap;
 }
-.hero__media:hover .hero__media-play-disc,
 .hero__media-play:hover .hero__media-play-disc {
   background: var(--color-blue-800);
   transform: scale(1.05);
