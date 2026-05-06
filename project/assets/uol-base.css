@@ -201,7 +201,6 @@ h1,h2,h3,h4,h5,h6 { color: var(--color-blue-800); margin: 0; }
 .btn-play:hover { background: var(--color-blue-800); }
 
 /* Image-area hover: parent container drives play button color */
-.media-slice__player:hover .btn-play,
 .inline-video__player:hover .btn-play,
 .t-card:hover .btn-play,
 .t-1up__media:hover .btn-play { background: var(--color-blue-800); }
