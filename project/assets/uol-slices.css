@@ -104,13 +104,13 @@
   padding: 14px 22px 14px 14px;
   border: 0;
   border-radius: 0;
-  background: rgba(255,255,255,.14);
+  background: rgba(0,0,0,.48);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   color: #fff;
   text-align: left;
   cursor: pointer;
-  box-shadow: 0 16px 32px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.18);
+  box-shadow: 0 16px 32px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.12);
   transition: transform .2s ease, background-color .2s ease;
 }
 .hero__media-play-thumb {
@@ -157,7 +157,7 @@
 }
 .hero__media-play-icon svg { width: 14px; height: 14px; margin-left: 2px; }
 .hero__media-play:hover {
-  background: rgba(255,255,255,.22);
+  background: rgba(0,0,0,.58);
   transform: translate(-50%, calc(-50% - 2px));
 }
 .hero__media-play:hover .hero__media-play-icon {
