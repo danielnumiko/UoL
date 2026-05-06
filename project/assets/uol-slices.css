@@ -157,9 +157,11 @@
 }
 .hero__media-play-icon svg { width: 14px; height: 14px; margin-left: 2px; }
 .hero__media-play:hover {
-  background: rgba(0,0,0,.58);
+  background: #fff;
   transform: translateX(-50%) translateY(-2px);
 }
+.hero__media-play:hover .hero__media-play-title { color: var(--color-blue-800); }
+.hero__media-play:hover .hero__media-play-meta { color: rgba(27, 21, 62, .7); }
 .hero__media-play:hover .hero__media-play-icon {
   background: var(--color-blue-800);
 }
