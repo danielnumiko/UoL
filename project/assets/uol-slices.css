@@ -94,43 +94,53 @@
     linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,.30) 100%);
   pointer-events: none;
 }
-/* Hero play affordance — bottom-left teaser card.
+/* Hero play affordance — centred teaser card.
    Treats the video as content, not a CTA, so it stops competing with
    the "Register your interest" button in the title band above. */
 .hero__media-play {
-  position: absolute; left: 32px; bottom: 32px;
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
   display: inline-flex; align-items: center;
-  gap: 18px;
-  padding: 16px 28px 16px 16px;
+  gap: 22px;
+  padding: 20px 36px 20px 20px;
   max-width: calc(100% - 64px);
   border: 0;
   background: #fff;
   color: var(--color-blue-800);
   text-align: left;
   cursor: pointer;
-  box-shadow: 0 16px 36px rgba(0,0,0,.35);
+  box-shadow: 0 22px 48px rgba(0,0,0,.42);
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .hero__media-play-icon {
+  position: relative;
   display: inline-flex; align-items: center; justify-content: center;
-  width: 64px; height: 64px;
+  width: 84px; height: 84px;
   border-radius: 50%;
   background: var(--theme-primary);
   color: #fff;
   flex-shrink: 0;
   transition: background-color .2s ease;
+  animation: heroPlayBreath 2.6s ease-in-out infinite;
 }
-.hero__media-play-icon svg { width: 22px; height: 22px; margin-left: 3px; }
+.hero__media-play-icon svg { width: 28px; height: 28px; margin-left: 4px; }
+@keyframes heroPlayBreath {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(222, 33, 33, .5); }
+  50%      { transform: scale(1.06); box-shadow: 0 0 0 14px rgba(222, 33, 33, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__media-play-icon { animation: none; }
+}
 .hero__media-play-text {
   display: inline-flex; flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   min-width: 0;
 }
 .hero__media-play-eyebrow {
   font-family: var(--f-sans);
   font-weight: 600;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--theme-primary);
@@ -139,17 +149,18 @@
   font-family: var(--f-freight);
   font-style: italic;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 26px;
   line-height: 1.2;
   color: var(--color-blue-800);
   text-wrap: balance;
 }
 .hero__media-play:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 20px 44px rgba(0,0,0,.4);
+  transform: translate(-50%, -50%) scale(1.03);
+  box-shadow: 0 26px 56px rgba(0,0,0,.5);
 }
 .hero__media-play:hover .hero__media-play-icon {
   background: var(--color-blue-800);
+  animation: none;
 }
 
 /* Breadcrumb strip between bands (matches LLB pattern) */
@@ -211,8 +222,10 @@
 @media (max-width: 720px){
   .hero__title-band { padding: 48px 0 40px; }
   .hero__modes { gap: 18px; }
-  .hero__media-play { left: 16px; bottom: 16px; gap: 12px; padding: 12px 18px 12px 12px; max-width: calc(100% - 32px); }
-  .hero__media-play-title { font-size: 17px; }
+  .hero__media-play { gap: 14px; padding: 14px 22px 14px 14px; max-width: calc(100% - 32px); }
+  .hero__media-play-icon { width: 64px; height: 64px; }
+  .hero__media-play-icon svg { width: 22px; height: 22px; }
+  .hero__media-play-title { font-size: 18px; }
   .hero__media-play-eyebrow { font-size: 11px; }
 }
 
