@@ -260,9 +260,9 @@ h1,h2,h3,h4,h5,h6 { color: var(--color-blue-800); margin: 0; }
 }
 
 /* Panel: just the media frame now (no chrome inside) */
-.modal__panel { position: relative; width: min(1200px, 100%); }
-.modal__panel--vertical { width: min(420px, 100%); }
-.modal__panel--image { width: min(1400px, 100%); }
+.modal__panel { position: relative; width: min(1000px, 100%); }
+.modal__panel--vertical { width: min(380px, 100%); }
+.modal__panel--image { width: min(1200px, 100%); }
 
 .modal__frame { aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
 .modal__frame--vertical { aspect-ratio: 9 / 16; }
