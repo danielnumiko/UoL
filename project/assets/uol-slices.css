@@ -225,8 +225,10 @@
 @media (max-width: 720px){
   .hero__title-band { padding: 48px 0 40px; }
   .hero__modes { gap: 18px; }
-  .hero__media-play { bottom: 60px; gap: 14px; padding: 10px 16px 10px 10px; max-width: calc(100% - 32px); }
-  .hero__media-play-thumb { width: 56px; height: 56px; }
+  .hero__media-play { bottom: 60px; gap: 14px; padding: 12px 18px; max-width: calc(100% - 32px); }
+  /* Hide the trailer thumbnail on small screens — the card collapses
+     to label + runtime + play arrow, easier to read at phone sizes. */
+  .hero__media-play-thumb { display: none; }
   .hero__media-play-title { font-size: 14px; }
   .hero__media-play-meta { font-size: 12px; }
   .hero__media-play-icon { width: 32px; height: 32px; }
