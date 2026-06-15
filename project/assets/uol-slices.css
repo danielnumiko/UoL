@@ -162,9 +162,9 @@
 }
 .hero__media-play:hover .hero__media-play-title { color: var(--color-blue-800); }
 .hero__media-play:hover .hero__media-play-meta { color: rgba(27, 21, 62, .7); }
-.hero__media-play:hover .hero__media-play-icon {
-  background: var(--color-blue-800);
-}
+/* Inner play disc stays red on the white-card hover — gives the
+   trailer card a stable "play here" anchor; the card-bg flip is
+   enough of a hover signal on its own. */
 
 /* Breadcrumb strip between bands (matches LLB pattern) */
 .hero__breadcrumb {
@@ -245,6 +245,26 @@
 }
 
 /* Variant B · overlay hero (one-band) */
+
+/* ---------- Global hover: image zoom + play-disc invert ----------
+   Single rollover treatment across every tile. The image inside the
+   container scales up gently (~4-5%) on hover; play buttons invert
+   to white-bg/red-arrow via rules in each component. Containers
+   already have overflow:hidden so the scale-up is clipped. */
+.media-slice__player img,
+.gallery-card__media img,
+.t-card__media img,
+.t-1up__media img,
+.inline-video__player img,
+.short-card img {
+  transition: transform .45s ease;
+}
+.media-slice__player:hover img,
+.gallery-card:hover .gallery-card__media img,
+.t-card:hover .t-card__media img,
+.t-1up:hover .t-1up__media img,
+.inline-video__player:hover img,
+.short-card:hover img { transform: scale(1.045); }
 
 /* ---------- Media slice ----------
    2-column layout (equal widths) above 768px: player one side,
@@ -441,7 +461,7 @@
   border: 0;
 }
 .gallery-card__media:hover .gallery-card__action,
-.gallery-card:hover .gallery-card__action { background: var(--color-blue-800); color: #fff; }
+.gallery-card:hover .gallery-card__action { background: #fff; color: var(--theme-primary); }
 .gallery-card__action svg { width: 22px; height: 22px; }
 
 .gallery-card__caption {
@@ -864,7 +884,7 @@
   pointer-events: none;
   box-shadow: 0 10px 28px rgba(0,0,0,.45);
 }
-.short-card:hover .short-card__play { opacity: 1; background: var(--color-blue-800); }
+.short-card:hover .short-card__play { opacity: 1; background: #fff; color: var(--theme-primary); }
 .short-card__play svg { width: 22px; height: 22px; margin: 0 0 0 3px; }
 
 .shorts-controls {
@@ -975,7 +995,7 @@
   transition: background-color .2s ease, transform .25s ease;
 }
 .study-hero__play svg { width: 22px; height: 22px; margin-left: 3px; }
-.study-hero:hover .study-hero__play { background: var(--color-blue-800); }
+.study-hero:hover .study-hero__play { background: #fff; color: var(--theme-primary); }
 .study-hero__body { padding-top: 22px; display: flex; flex-direction: column; gap: 10px; }
 .study-hero__title {
   font-family: var(--f-freight); font-weight: 600;

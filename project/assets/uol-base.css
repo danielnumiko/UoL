@@ -196,14 +196,17 @@ h1,h2,h3,h4,h5,h6 { color: var(--color-blue-800); margin: 0; }
   width: 64px; height: 64px;
   border-radius: 50%;
   background: var(--theme-primary); color: #fff;
-  transition: background-color .2s ease;
+  transition: background-color .2s ease, color .2s ease;
 }
-.btn-play:hover { background: var(--color-blue-800); }
+.btn-play:hover { background: #fff; color: var(--theme-primary); }
 
-/* Image-area hover: parent container drives play button color */
+/* Image-area hover: parent container drives play button colour —
+   invert to white bg + red arrow on hover, single global rollover. */
+.media-slice__player:hover .btn-play,
 .inline-video__player:hover .btn-play,
 .t-card:hover .btn-play,
-.t-1up__media:hover .btn-play { background: var(--color-blue-800); }
+.t-1up:hover .btn-play,
+.t-1up__media:hover .btn-play { background: #fff; color: var(--theme-primary); }
 .btn-play svg { width: 22px; height: 22px; margin-left: 2px; }
 /* --lg retained as alias; sizing now matches base */
 .btn-play--lg { width: 64px; height: 64px; }
