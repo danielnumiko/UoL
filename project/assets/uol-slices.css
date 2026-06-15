@@ -461,7 +461,7 @@
   border: 0;
 }
 .gallery-card__media:hover .gallery-card__action,
-.gallery-card:hover .gallery-card__action { background: #fff; color: var(--theme-primary); }
+.gallery-card:hover .gallery-card__action { background: #fff; color: var(--color-blue-800); }
 .gallery-card__action svg { width: 22px; height: 22px; }
 
 .gallery-card__caption {
@@ -811,7 +811,7 @@
 }
 .shorts-single:hover .shorts-single__media img { transform: scale(1.045); }
 .shorts-single__media .btn-play--lg { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
-.shorts-single:hover .btn-play { background: #fff; color: var(--theme-primary); }
+.shorts-single:hover .btn-play { background: #fff; color: var(--color-blue-800); }
 .shorts-single__title {
   font-family: var(--f-freight);
   font-weight: 600;
@@ -938,7 +938,7 @@
   pointer-events: none;
   box-shadow: 0 10px 28px rgba(0,0,0,.45);
 }
-.short-card:hover .short-card__play { opacity: 1; background: #fff; color: var(--theme-primary); }
+.short-card:hover .short-card__play { opacity: 1; background: #fff; color: var(--color-blue-800); }
 .short-card__play svg { width: 22px; height: 22px; margin: 0 0 0 3px; }
 
 .shorts-controls {
@@ -1049,7 +1049,7 @@
   transition: background-color .2s ease, transform .25s ease;
 }
 .study-hero__play svg { width: 22px; height: 22px; margin-left: 3px; }
-.study-hero:hover .study-hero__play { background: #fff; color: var(--theme-primary); }
+.study-hero:hover .study-hero__play { background: #fff; color: var(--color-blue-800); }
 .study-hero__body { padding-top: 22px; display: flex; flex-direction: column; gap: 10px; }
 .study-hero__title {
   font-family: var(--f-freight); font-weight: 600;
