@@ -779,6 +779,60 @@
 }
 .inline-video__cap strong { color: var(--color-blue-800); font-weight: 500; }
 
+/* ---------- Single Short ----------
+   Mirrors the testimonial 1-up vertical shell: 2-column carded
+   layout, 9:16 player capped at 320px on one side, heading and
+   caption on the other. Stacks below 768px. */
+.shorts-single {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+  background: var(--color-grey-100);
+  padding: 24px;
+  margin-bottom: 40px;
+}
+@media (min-width: 768px){ .shorts-single { grid-template-columns: 1.2fr 1fr; gap: 40px; padding: 32px; } }
+@media (min-width: 1024px){ .shorts-single { padding: 48px; gap: 56px; } }
+.shorts-single__media {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  background: var(--color-blue-800);
+  overflow: hidden;
+  cursor: pointer;
+}
+.shorts-single__media img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+.shorts-single:hover .shorts-single__media img { transform: scale(1.045); }
+.shorts-single__media .btn-play--lg { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.shorts-single:hover .btn-play { background: #fff; color: var(--theme-primary); }
+.shorts-single__title {
+  font-family: var(--f-freight);
+  font-weight: 600;
+  font-size: clamp(26px, 2.6vw, 36px);
+  color: var(--color-blue-800);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
+.shorts-single__caption {
+  font-family: var(--f-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-body);
+  max-width: 70ch;
+  margin: 0;
+  border-left: 4px solid var(--theme-primary);
+  padding-left: 12px;
+}
+
 /* ---------- Vertical / Shorts carousel ---------- */
 .shorts {
   position: relative;
