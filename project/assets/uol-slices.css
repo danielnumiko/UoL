@@ -277,8 +277,10 @@
   max-width: 320px;
   margin: 0 auto;
 }
+/* Keep the player capped + centred at all sizes so the 9:16 ratio
+   doesn't stretch into a wall of video. Column width is unchanged. */
 @media (min-width: 768px){
-  .media-slice__player--vertical { max-width: none; margin: 0; }
+  .media-slice__player--vertical { max-width: 320px; margin: 0 auto; }
 }
 .media-slice__player img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .media-slice__player .btn-play--lg {
