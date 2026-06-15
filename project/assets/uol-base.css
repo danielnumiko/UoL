@@ -204,10 +204,10 @@ h1,h2,h3,h4,h5,h6 { color: var(--color-blue-800); margin: 0; }
 .inline-video__player:hover .btn-play,
 .t-card:hover .btn-play,
 .t-1up__media:hover .btn-play { background: var(--color-blue-800); }
-.btn-play svg { width: 22px; height: 22px; margin-left: 3px; }
+.btn-play svg { width: 22px; height: 22px; margin-left: 2px; }
 /* --lg retained as alias; sizing now matches base */
 .btn-play--lg { width: 64px; height: 64px; }
-.btn-play--lg svg { width: 22px; height: 22px; margin-left: 3px; }
+.btn-play--lg svg { width: 22px; height: 22px; margin-left: 2px; }
 
 /* ---------- Modal (gallery-capable) ---------- */
 .modal { position: fixed; inset: 0; z-index: 100; display: none; }
@@ -218,22 +218,25 @@ h1,h2,h3,h4,h5,h6 { color: var(--color-blue-800); margin: 0; }
 .modal__counter {
   position: fixed; top: 24px; left: 32px;
   color: rgba(255,255,255,.72);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  font-size: 13px; letter-spacing: .08em;
+  font-family: var(--f-sans);
+  font-size: 13px; font-weight: 500; letter-spacing: .08em;
   z-index: 1;
 }
 
-/* Top-right close button — sits on the dim backdrop, not on the panel */
+/* Top-right close button — sits on the dim backdrop, not on the panel.
+   Hairline keyline matches the transcript-toggle pattern so the hit-area
+   is obvious and tappable. */
 .modal__close {
   position: fixed; top: 18px; right: 24px;
   width: 40px; height: 40px;
   background: transparent;
   color: #fff;
+  border: 1px solid rgba(255,255,255,.3);
   display: flex; align-items: center; justify-content: center;
-  transition: background-color .2s ease;
+  transition: background-color .2s ease, border-color .2s ease;
   z-index: 1;
 }
-.modal__close:hover { background: rgba(255,255,255,.12); }
+.modal__close:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.5); }
 
 /* Prev/next: red square buttons 50px outside the video on each side */
 .modal__nav {
@@ -251,18 +254,29 @@ h1,h2,h3,h4,h5,h6 { color: var(--color-blue-800); margin: 0; }
 .modal__nav--next { left: 100%; margin-left: 50px; }
 .modal__nav svg { width: 16px; height: 16px; }
 
-/* Shell: centers the panel + caption stack */
+/* Shell: centers the panel + caption stack. Scrollable when content
+   exceeds the viewport so transcript reading isn't squashed. The
+   ::before/::after auto-margins center content vertically when it
+   fits and collapse to 0 (sticking to flex-start) when it overflows. */
 .modal__shell {
   position: absolute; inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 64px 140px;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  padding: 32px 140px;
   gap: 18px;
+  overflow-y: auto;
 }
+.modal__shell::before { content: ''; margin-top: auto; flex-shrink: 0; }
+.modal__shell::after { content: ''; margin-bottom: auto; flex-shrink: 0; }
 
-/* Panel: just the media frame now (no chrome inside) */
+/* Panel: just the media frame now (no chrome inside).
+   When no transcript toggle is showing, widen the player to recover
+   the otherwise-wasted space below it. */
 .modal__panel { position: relative; width: min(1000px, 100%); }
 .modal__panel--vertical { width: min(380px, 100%); }
 .modal__panel--image { width: min(1200px, 100%); }
+.modal__shell:not(:has(.modal__transcript-toggle.is-visible)) .modal__panel:not(.modal__panel--vertical):not(.modal__panel--image) {
+  width: min(1200px, 100%);
+}
 
 .modal__frame { aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
 .modal__frame--vertical { aspect-ratio: 9 / 16; }
@@ -270,13 +284,15 @@ h1,h2,h3,h4,h5,h6 { color: var(--color-blue-800); margin: 0; }
 .modal__frame iframe { width: 100%; height: 100%; border: 0; display: block; }
 .modal__img { display: block; width: 100%; height: 100%; max-height: calc(100vh - 200px); object-fit: contain; }
 
-/* Caption beneath the media, on the navy backdrop */
+/* Caption beneath the media, on the navy backdrop.
+   Roman (not italic) at this small size for legibility — italic
+   freight at 16px was reported as hard to read. */
 .modal__title {
   color: #fff;
   font-family: var(--f-freight);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
   line-height: 1.4;
   margin: 0;
   max-width: min(1200px, 100%);
@@ -307,16 +323,16 @@ h1,h2,h3,h4,h5,h6 { color: var(--color-blue-800); margin: 0; }
 .modal__transcript-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
 
 .modal__transcript {
-  width: min(900px, 100%);
-  max-height: 32vh;
+  width: min(960px, 100%);
+  max-height: 42vh;
   overflow-y: auto;
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.12);
-  padding: 24px 28px;
+  padding: 28px 32px;
   color: rgba(255,255,255,.92);
   font-family: var(--f-sans);
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.7;
   text-align: left;
   scrollbar-color: rgba(255,255,255,.4) rgba(255,255,255,.08);
   scrollbar-width: thin;
