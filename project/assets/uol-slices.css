@@ -225,10 +225,20 @@
 @media (max-width: 720px){
   .hero__title-band { padding: 48px 0 40px; }
   .hero__modes { gap: 18px; }
-  .hero__media-play { bottom: 60px; gap: 14px; padding: 12px 18px; max-width: calc(100% - 32px); }
-  /* Hide the trailer thumbnail on small screens — the card collapses
-     to label + runtime + play arrow, easier to read at phone sizes. */
-  .hero__media-play-thumb { display: none; }
+  /* On small screens the trailer card stretches to fill the photo
+     width (with a 16px inset) and sits closer to the bottom — reads
+     as a clear "watch" bar rather than a floating tile. Thumbnail
+     stays in. */
+  .hero__media-play {
+    left: 16px; right: 16px; bottom: 24px;
+    transform: none;
+    gap: 14px;
+    padding: 12px 16px 12px 12px;
+    max-width: none;
+  }
+  .hero__media-play:hover { transform: translateY(-2px); }
+  .hero__media-play-thumb { width: 56px; height: 56px; }
+  .hero__media-play-text { flex: 1; min-width: 0; }
   .hero__media-play-title { font-size: 14px; }
   .hero__media-play-meta { font-size: 12px; }
   .hero__media-play-icon { width: 32px; height: 32px; }
