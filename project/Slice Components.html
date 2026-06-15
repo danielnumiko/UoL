@@ -154,12 +154,13 @@
             <li>Caption supports a richer description (≤ 70 ch) and a credit line.</li>
             <li>Optional transcript panel with timecodes — supports accessibility and GEO.</li>
             <li><code>VideoObject</code> structured data emitted server‑side from the Media metadata.</li>
+            <li>9:16 vertical variant uses a two‑column layout — player on the left, heading and caption on the right; stacks below on mobile.</li>
           </ul>
         </div>
       </div>
 
       <div class="variant">
-        <p class="variant__label">Default · with transcript</p>
+        <p class="variant__label">Default · 16:9 with transcript</p>
         <div class="variant__body">
       <div class="media-slice">
         <h3 class="media-slice__title">Inside the LLB: a typical week as a distance‑learning student</h3>
@@ -178,6 +179,29 @@
           <p class="media-slice__caption">A walk‑through of how online LLB students structure their week — recorded lectures, weekly seminars, peer study groups, and the moots that bring case study work to life. Filmed with current students in Pakistan, Sri Lanka, and the UK.</p>
         </div>
 
+      </div>
+        </div>
+      </div>
+
+      <div class="variant">
+        <p class="variant__label">Vertical · 9:16 with side caption</p>
+        <div class="variant__body">
+      <div class="media-slice media-slice--vertical">
+        <div class="media-slice__player media-slice__player--vertical">
+          <img src="https://i.ytimg.com/vi/v_EqbGvbODg/maxresdefault.jpg" alt="">
+          <button type="button" class="btn-play btn-play--lg"
+                  aria-label="Play video"
+                  data-video-id="v_EqbGvbODg"
+                  data-video-title="Sixty seconds: a typical day"
+                  data-video-vertical="true"
+                  data-video-set="media-vertical">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+        <div class="media-slice__col">
+          <h3 class="media-slice__title media-slice__title--inline">Sixty seconds: a typical day as a distance‑learning student</h3>
+          <p class="media-slice__caption">Maarij records a 60‑second snapshot of his day — recorded lectures over breakfast, online library at lunchtime, and a mooting practice call with study group on the way home. A first‑hand glimpse of how online study fits around real life.</p>
+        </div>
       </div>
         </div>
       </div>

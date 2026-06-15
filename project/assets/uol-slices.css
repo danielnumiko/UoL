@@ -251,11 +251,35 @@
   display: grid;
   gap: 24px;
 }
+/* 2-column variant for 9:16 vertical video: player one side, slice
+   heading + caption on the other. Stacks on small screens. */
+.media-slice--vertical { gap: 24px; }
+@media (min-width: 768px){
+  .media-slice--vertical {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+    gap: 40px;
+    align-items: center;
+  }
+}
+@media (min-width: 1024px){
+  .media-slice--vertical { gap: 64px; }
+}
+.media-slice__col { display: flex; flex-direction: column; gap: 16px; }
+.media-slice__title--inline { margin: 0; }
+
 .media-slice__player {
   position: relative;
   background: var(--color-blue-800);
   aspect-ratio: 16 / 9;
   overflow: hidden;
+}
+.media-slice__player--vertical {
+  aspect-ratio: 9 / 16;
+  max-width: 320px;
+  margin: 0 auto;
+}
+@media (min-width: 768px){
+  .media-slice__player--vertical { max-width: none; margin: 0; }
 }
 .media-slice__player img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .media-slice__player .btn-play--lg {
