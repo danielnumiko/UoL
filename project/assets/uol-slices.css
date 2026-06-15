@@ -246,26 +246,25 @@
 
 /* Variant B · overlay hero (one-band) */
 
-/* ---------- Media slice ---------- */
+/* ---------- Media slice ----------
+   2-column layout (equal widths) above 768px: player one side,
+   heading + caption on the other. Stacks below 768px. The vertical
+   variant only switches the player aspect ratio. */
 .media-slice {
   display: grid;
   gap: 24px;
 }
-/* 2-column variant for 9:16 vertical video: player one side, slice
-   heading + caption on the other. Stacks on small screens. */
-.media-slice--vertical { gap: 24px; }
 @media (min-width: 768px){
-  .media-slice--vertical {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  .media-slice {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 40px;
     align-items: center;
   }
 }
 @media (min-width: 1024px){
-  .media-slice--vertical { gap: 64px; }
+  .media-slice { gap: 56px; }
 }
 .media-slice__col { display: flex; flex-direction: column; gap: 16px; }
-.media-slice__title--inline { margin: 0; }
 
 .media-slice__player {
   position: relative;
@@ -291,11 +290,11 @@
 .media-slice__title {
   font-family: var(--f-freight);
   font-weight: 600;
-  font-size: clamp(28px, 3.4vw, 44px);
+  font-size: clamp(26px, 2.6vw, 36px);
   color: var(--color-blue-800);
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: -0.01em;
-  margin: 0 0 32px;
+  margin: 0;
 }
 .media-slice__chip {
   display: inline-flex; align-items: center; gap: 8px;
