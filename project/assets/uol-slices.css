@@ -225,12 +225,12 @@
 @media (max-width: 720px){
   .hero__title-band { padding: 48px 0 40px; }
   .hero__modes { gap: 18px; }
-  /* On small screens the trailer card stretches to fill the photo
-     width (with a 16px inset) and sits closer to the bottom — reads
-     as a clear "watch" bar rather than a floating tile. Thumbnail
-     stays in. */
+  /* On small screens the trailer card stretches to fill the content
+     grid width — left/right insets use --gutter so the card aligns
+     with the title band and the page's container columns rather than
+     bleeding to the photo's edge. */
   .hero__media-play {
-    left: 16px; right: 16px; bottom: 24px;
+    left: var(--gutter); right: var(--gutter); bottom: 24px;
     transform: none;
     gap: 14px;
     padding: 12px 16px 12px 12px;
