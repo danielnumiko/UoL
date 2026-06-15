@@ -366,6 +366,7 @@
           <ul>
             <li>1 video → editorial side‑by‑side layout (was: awkward 2‑col).</li>
             <li>1 video gains a media‑right modifier (<code>.t-1up--right</code>) so multiple 1‑ups on a page can alternate left/right.</li>
+            <li>1 video also supports a vertical (9:16) player via <code>.t-1up--vertical</code> for Short‑style testimonials. Composes with <code>--right</code>.</li>
             <li>2 videos → balanced two‑column grid (was: 3‑col with a gap).</li>
             <li>3 videos → middle slot natively supports a 9:16 Short (was: cropped horizontally).</li>
             <li>Modal: ←/→ keys, swipe, and prev/next arrows step through the set.</li>
@@ -394,6 +395,33 @@
               <blockquote class="t-1up__quote">&ldquo;The LLM gave me the credibility to walk into rooms I'd previously only watched from the doorway.&rdquo;</blockquote>
               <p class="t-card__attr">Sara Ahmed
                 <span class="t-card__attr-meta">— LLM, 2024 · Pakistan</span>
+              </p>
+            </div>
+          </article>
+        </div>
+        </div>
+      </div>
+
+      <div class="variant">
+        <p class="variant__label">Layout · 1 video, vertical (9:16)</p>
+        <div class="variant__body">
+        <h3 class="slice-band__title">Hear from our students</h3>
+        <div class="t-grid t-grid--1up">
+          <article class="t-1up t-1up--vertical"
+                   data-video-id="v_EqbGvbODg"
+                   data-video-title="Sixty seconds: the moment everything clicked"
+                   data-video-vertical="true"
+                   data-video-set="testimonials-1up-vertical">
+            <div class="t-1up__media">
+              <img src="https://i.ytimg.com/vi/v_EqbGvbODg/maxresdefault.jpg" alt="">
+              <button type="button" class="btn-play btn-play--lg" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <div>
+              <blockquote class="t-1up__quote">&ldquo;Sixty seconds was all it took. The cohort thread lit up after the mooting result came in — twelve countries cheering at once.&rdquo;</blockquote>
+              <p class="t-card__attr">Aisha Rahman
+                <span class="t-card__attr-meta">— LLM, 2025 · UK</span>
               </p>
             </div>
           </article>
