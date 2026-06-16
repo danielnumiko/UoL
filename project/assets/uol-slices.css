@@ -269,20 +269,26 @@
 /* ---------- Media slice ----------
    2-column layout (equal widths) above 768px: player one side,
    heading + caption on the other. Stacks below 768px. The vertical
-   variant only switches the player aspect ratio. */
+   variant only switches the player aspect ratio. Sits inside a
+   BG-shade card (matching Figma + the t-1up / shorts-single
+   testimonial slices) so the slice reads as a contained block
+   rather than free content on the page. */
 .media-slice {
   display: grid;
   gap: 24px;
+  background: var(--color-grey-100);
+  padding: 24px;
 }
 @media (min-width: 768px){
   .media-slice {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 40px;
     align-items: center;
+    padding: 32px;
   }
 }
 @media (min-width: 1024px){
-  .media-slice { gap: 56px; }
+  .media-slice { gap: 56px; padding: 48px; }
 }
 .media-slice__col { display: flex; flex-direction: column; gap: 16px; }
 
