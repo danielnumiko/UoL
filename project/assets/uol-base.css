@@ -374,9 +374,26 @@ h1,h2,h3,h4,h5,h6 { color: var(--color-blue-800); margin: 0; }
 .modal__yt-fallback:hover svg { color: #fff; }
 @media (max-width: 900px){
   .modal__shell { padding: 56px 16px; }
-  .modal__nav--prev { margin-right: 12px; }
-  .modal__nav--next { margin-left: 12px; }
   .modal__counter { left: 16px; top: 18px; }
+
+  /* Arrows drop below the panel — at this width they'd overflow
+     off-screen when flanking. Use grid to put the frame on top
+     row and prev / next on the second row, anchored either side
+     of the centre gap. */
+  .modal__panel {
+    display: grid;
+    grid-template-areas:
+      "frame frame"
+      "prev  next";
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    justify-items: center;
+    width: 100%;
+  }
+  .modal__panel .modal__frame { grid-area: frame; width: 100%; }
+  .modal__nav { position: static; top: auto; transform: none; }
+  .modal__nav--prev { grid-area: prev; margin: 0; justify-self: end; }
+  .modal__nav--next { grid-area: next; margin: 0; justify-self: start; }
 }
 
 :focus-visible { outline: 2px solid var(--theme-primary); outline-offset: 3px; }
